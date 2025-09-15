@@ -58,4 +58,35 @@ if (!function_exists('durel_redesigned_assets')):
 endif;
 add_action('wp_enqueue_scripts', 'durel_redesigned_assets');
 
+
+// Helper function to get global contact information
+if (!function_exists('durel_get_contact_info')):
+    function durel_get_contact_info($key = null) {
+        $options = get_option('durel_options');
+        
+        $contact_info = array(
+            'company_name' => $options['durel_ss_company_name'] ?? '',
+            'phone' => $options['durel_ss_company_phone'] ?? '',
+            'email' => $options['durel_ss_company_email'] ?? '',
+            'address' => $options['durel_ss_company_address'] ?? '',
+            'description' => $options['durel_ss_company_description'] ?? '',
+            'google_map_link' => $options['durel_ss_google_map_link'] ?? '',
+            'social_links' => $options['durel_ss_social_links_group'] ?? array(),
+            'copyright' => $options['durel_ss_copyright_text'] ?? '© 2024 All Rights Reserved',
+            'header_logo' => $options['durel_ss_header_logo'] ?? '',
+            'client_login_link' => $options['durel_ss_client_login_link'] ?? '',
+            'new_connection_link' => $options['durel_ss_new_connection_link'] ?? '/new-connection',
+            'footer_show_contact' => $options['durel_ss_footer_show_contact'] ?? true,
+            'footer_show_social' => $options['durel_ss_footer_show_social'] ?? true,
+            'show_floating_buttons' => $options['durel_ss_show_floating_buttons'] ?? true,
+        );
+        
+        if ($key) {
+            return isset($contact_info[$key]) ? $contact_info[$key] : '';
+        }
+        
+        return $contact_info;
+    }
+endif;
+
 ?>

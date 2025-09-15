@@ -63,7 +63,7 @@ class Walker_Nav_Main_Menu extends Walker
 		$indent = str_repeat($t, $depth);
 
 		// Default class.
-		$classes = array('sub-menu', 'dropdown-menu');
+		$classes = array('dropdown-menu');
 
 		/**
 		 * Filters the CSS class(es) applied to a menu list element.
@@ -152,16 +152,20 @@ class Walker_Nav_Main_Menu extends Walker
 		}
 		$indent = ($depth) ? str_repeat($t, $depth) : '';
 
-		$classes = empty($menu_item->classes) ? array() : (array) $menu_item->classes;
-		$classes[] = 'menu-item-' . $menu_item->ID;
-		$classes[] = 'nav-item';
-
-		if (in_array('current_page_item', $classes)):
-			$classes[] = "active";
-		endif;
-		if (in_array('menu-item-has-children', $classes)):
-			$classes[] = "dropdown";
-		endif;
+		// Clean Bootstrap classes for navigation items
+		$classes = array();
+		
+		// Add active state class
+		if (in_array('current-menu-item', $menu_item->classes) || in_array('current_page_item', $menu_item->classes)) {
+			$classes[] = 'nav-item active';
+		} else {
+			$classes[] = 'nav-item';
+		}
+		
+		// Add dropdown class if has children
+		if (in_array('menu-item-has-children', $menu_item->classes)) {
+			$classes[] = 'dropdown';
+		}
 
 		/**
 		 * Filters the arguments for a single nav menu item.
@@ -244,6 +248,7 @@ class Walker_Nav_Main_Menu extends Walker
 		}
 
 		$atts['aria-current'] = $menu_item->current ? 'page' : '';
+		$atts['class'] = 'nav-link';
 
 
 

@@ -2,7 +2,7 @@
 
 /* Template Name: Contact Us */
 get_header();
-$get_options = get_option('durel_options');
+$contact_info = durel_get_contact_info();
 ?>
 
 <!-- Page Banner Section Start  -->
@@ -21,11 +21,11 @@ $get_options = get_option('durel_options');
                 </div>
             </div>
 
-            <?php if ($get_options['durel_ss_cu_img']['url']): ?>
+            <?php if (!empty($contact_info['header_logo']['url'])): ?>
                 <div class="col">
                     <div class="img-box">
-                        <img class="img-fluid w-100 h-100" src="<?php echo $get_options['durel_ss_cu_img']['url'] ?>"
-                            alt="">
+                        <img class="img-fluid w-100 h-100" src="<?php echo esc_url($contact_info['header_logo']['url']); ?>"
+                            alt="<?php echo esc_attr($contact_info['company_name'] ?: 'Contact Us'); ?>">
                     </div>
                 </div>
             <?php endif; ?>
@@ -40,38 +40,36 @@ $get_options = get_option('durel_options');
     <div class="row">
         <div class="col-xl-10 m-auto">
             <div class="row">
-                <?php if ($get_options['durel_ss_cu_address']): ?>
+                <?php if (!empty($contact_info['address'])): ?>
                     <div class="col-md-4">
                         <div class="address-block-one text-center mb-40 wow fadeInUp">
                             <i class="fas fa-map-marker-alt"></i>
                             <h5 class="title"><?php _e('Our Address', 'durel') ?></h5>
-                            <p><?php _e($get_options['durel_ss_cu_address'], 'durel') ?></p>
+                            <p><?php echo nl2br(esc_html($contact_info['address'])); ?></p>
                         </div>
                     </div>
                 <?php endif;
-                if ($get_options['durel_ss_cu_email']):
+                if (!empty($contact_info['email'])):
                     ?>
                     <div class="col-md-4">
                         <div class="address-block-one text-center mb-40 wow fadeInUp">
                             <i class="fas fa-envelope"></i>
                             <h5 class="title"><?php _e('Contact Info', 'durel') ?></h5>
                             <p>
-                                <a
-                                    href="mailto:<?php echo $get_options['durel_ss_cu_email'] ?>"><?php _e($get_options['durel_ss_cu_email'], 'durel') ?></a>
+                                <a href="mailto:<?php echo esc_attr($contact_info['email']); ?>"><?php echo esc_html($contact_info['email']); ?></a>
                             </p>
                         </div>
                     </div>
                     <?php
                 endif;
-                if ($get_options['durel_ss_cu_number']):
+                if (!empty($contact_info['phone'])):
                     ?>
                     <div class="col-md-4">
                         <div class="address-block-one text-center mb-40 wow fadeInUp">
                             <i class="fas fa-phone-alt"></i>
                             <h5 class="title"><?php _e('Call Support', 'durel') ?></h5>
                             <p>
-                                <a
-                                    href="tel:<?php echo $get_options['durel_ss_cu_number'] ?>"><?php echo $get_options['durel_ss_cu_number'] ?></a>
+                                <a href="tel:<?php echo esc_attr($contact_info['phone']); ?>"><?php echo esc_html($contact_info['phone']); ?></a>
                             </p>
                         </div>
                     </div>
@@ -83,13 +81,12 @@ $get_options = get_option('durel_options');
 <!-- Contact Info End -->
 
 <!-- Google Map Start -->
-<?php if ($get_options['durel_ss_cu_google_map']): ?>
+<?php if (!empty($contact_info['google_map_link'])): ?>
     <div class="google-map-section">
-        <iframe src="<?php echo $get_options['durel_ss_cu_google_map'] ?>" width="100%" height="450" style="border:0;"
+        <iframe src="<?php echo esc_url($contact_info['google_map_link']); ?>" width="100%" height="450" style="border:0;"
             allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
-    <?php
-endif; ?>
+<?php endif; ?>
 <!-- Google Map End -->
 
 

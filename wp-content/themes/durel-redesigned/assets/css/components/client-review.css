@@ -1,0 +1,478 @@
+/* Client Review Section Styles */
+
+.client-review-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.review-section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.review-section-header h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.review-section-header p {
+    font-size: 1.25rem;
+    color: #6b7280;
+    margin: 0;
+}
+
+.reviews-slider-container {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.reviews-slider {
+    position: relative;
+}
+
+.reviews-slider .slick-track {
+    display: flex;
+    align-items: stretch;
+}
+
+.reviews-slider .slick-slide {
+    height: auto;
+    display: flex;
+}
+
+.review-slide {
+    padding: 0 0.75rem;
+    outline: none;
+    height: 100%;
+    display: flex;
+}
+
+.review-card {
+    background: white;
+    border-radius: 0.75rem;
+    padding: 2rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 1px solid #f3f4f6;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 280px;
+}
+
+.review-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #dc2626, #b91c1c);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.review-slide:hover .review-card::before {
+    transform: scaleX(1);
+}
+
+.review-slide:hover .review-card {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px -3px rgba(0, 0, 0, 0.15);
+}
+
+.review-content {
+    margin-bottom: 1.5rem;
+    flex: 1;
+}
+
+.review-quote {
+    text-align: left;
+    margin-bottom: 1rem;
+}
+
+.review-quote i {
+    font-size: 1.5rem;
+    color: #dc2626;
+    opacity: 0.6;
+}
+
+.review-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #4b5563;
+    margin: 0;
+    text-align: left;
+}
+
+.review-author {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.author-image {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 0.75rem;
+    flex-shrink: 0;
+    border: 2px solid #e5e7eb;
+}
+
+.author-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.author-image-placeholder {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background: #f3f4f6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 0.75rem;
+    flex-shrink: 0;
+}
+
+.author-image-placeholder i {
+    font-size: 1.25rem;
+    color: #9ca3af;
+}
+
+.author-info {
+    text-align: left;
+}
+
+.author-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 0 0 0.25rem 0;
+    line-height: 1.3;
+}
+
+.author-designation {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin: 0;
+    font-weight: 500;
+}
+
+.review-rating {
+    text-align: left;
+    margin-top: auto;
+}
+
+.stars {
+    display: flex;
+    gap: 0.125rem;
+}
+
+.stars i {
+    font-size: 0.875rem;
+    color: #fbbf24;
+    transition: all 0.3s ease;
+}
+
+.review-slide:hover .stars i {
+    transform: scale(1.05);
+}
+
+/* Slider Navigation */
+.reviews-slick-prev,
+.reviews-slick-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background: #dc2626;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+}
+
+.reviews-slick-prev:hover,
+.reviews-slick-next:hover {
+    background: #b91c1c;
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 6px 16px rgba(220, 38, 38, 0.4);
+}
+
+.reviews-slick-prev {
+    left: -25px;
+}
+
+.reviews-slick-next {
+    right: -25px;
+}
+
+.reviews-slick-prev i,
+.reviews-slick-next i {
+    font-size: 1.2rem;
+}
+
+/* Slider Dots */
+.reviews-slider .slick-dots {
+    position: static;
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.reviews-slider .slick-dots li {
+    display: inline-block;
+    margin: 0 5px;
+}
+
+.reviews-slider .slick-dots li button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: none;
+    background: #d1d5db;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0;
+    padding: 0;
+}
+
+.reviews-slider .slick-dots li.slick-active button {
+    background: #dc2626;
+    transform: scale(1.2);
+}
+
+.reviews-slider .slick-dots li button:hover {
+    background: #dc2626;
+    transform: scale(1.1);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .reviews-slider-container {
+        padding: 0 1rem;
+    }
+
+    .reviews-slick-prev {
+        left: -15px;
+    }
+
+    .reviews-slick-next {
+        right: -15px;
+    }
+
+    .review-card {
+        padding: 1.5rem;
+        min-height: 260px;
+    }
+
+    .review-text {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .review-section-header h2 {
+        font-size: 2rem;
+    }
+
+    .review-section-header p {
+        font-size: 1.125rem;
+    }
+
+    .review-section-header {
+        margin-bottom: 3rem;
+    }
+
+    .reviews-slider-container {
+        padding: 0 0.5rem;
+    }
+
+    .reviews-slick-prev,
+    .reviews-slick-next {
+        width: 40px;
+        height: 40px;
+    }
+
+    .reviews-slick-prev {
+        left: -10px;
+    }
+
+    .reviews-slick-next {
+        right: -10px;
+    }
+
+    .review-card {
+        padding: 1.25rem;
+        min-height: 240px;
+    }
+
+    .review-quote i {
+        font-size: 1.25rem;
+    }
+
+    .review-text {
+        font-size: 0.9rem;
+    }
+
+    .author-image,
+    .author-image-placeholder {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
+    .author-image-placeholder i {
+        font-size: 1rem;
+    }
+
+    .author-name {
+        font-size: 0.9rem;
+    }
+
+    .author-designation {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .client-review-section {
+        padding: 3rem 0;
+    }
+
+    .review-section-header h2 {
+        font-size: 1.75rem;
+    }
+
+    .review-section-header p {
+        font-size: 1rem;
+    }
+
+    .reviews-slider-container {
+        padding: 0;
+    }
+
+    .reviews-slick-prev,
+    .reviews-slick-next {
+        width: 35px;
+        height: 35px;
+        display: none;
+        /* Hide arrows on very small screens */
+    }
+
+    .review-card {
+        padding: 1rem;
+        min-height: 220px;
+    }
+
+    .review-quote i {
+        font-size: 1rem;
+    }
+
+    .review-text {
+        font-size: 0.875rem;
+    }
+
+    .author-image,
+    .author-image-placeholder {
+        width: 2.25rem;
+        height: 2.25rem;
+        margin-right: 0.5rem;
+    }
+
+    .author-image-placeholder i {
+        font-size: 0.875rem;
+    }
+
+    .author-name {
+        font-size: 0.875rem;
+    }
+
+    .author-designation {
+        font-size: 0.75rem;
+    }
+
+    .stars i {
+        font-size: 0.75rem;
+    }
+}
+
+/* Animation for reviews */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.review-slide {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.review-slide:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.review-slide:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.review-slide:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.review-slide:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.review-slide:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+/* Focus states for accessibility */
+.review-card:focus-within {
+    outline: 2px solid #dc2626;
+    outline-offset: 2px;
+}
+
+/* Subtle background pattern */
+.client-review-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: radial-gradient(circle at 20% 50%, rgba(220, 38, 38, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(220, 38, 38, 0.03) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.client-review-section .container {
+    position: relative;
+    z-index: 1;
+}

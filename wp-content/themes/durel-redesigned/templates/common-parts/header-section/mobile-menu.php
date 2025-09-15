@@ -57,6 +57,19 @@ $get_options = get_option('durel_options');
                                 )
                             );
                             ?>
+                            
+                            <!-- Mobile Download APK Button -->
+                            <div class="mobile-download-section mt-4 text-center">
+                                <?php 
+                                $get_options = get_option('durel_options');
+                                $apk_url = $get_options['durel_ss_apk_download_url'] ?? '#';
+                                $apk_text = $get_options['durel_ss_apk_download_text'] ?? 'Download APK';
+                                ?>
+                                <a href="<?php echo esc_url($apk_url); ?>" class="btn btn-success w-100 download-apk-btn-mobile" download>
+                                    <i class="fas fa-download me-2"></i>
+                                    <?php echo esc_html($apk_text); ?>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </nav>

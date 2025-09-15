@@ -1,6 +1,6 @@
 <?php
 /* Display Footer Section */
-$get_options = get_option('durel_options');
+$contact_info = durel_get_contact_info();
 
 function footer_menu($themeLocation, $menuClass = "", $walker = "")
 {
@@ -28,86 +28,120 @@ function footer_menu($themeLocation, $menuClass = "", $walker = "")
     );
 }
 ?>
-<section class="footer-with-bg">
-    <div class="footer-one">
-        <div class="container">
-            <div class="inner-wrapper">
-                <div class="row row-cols-2 row-cols-lg-5">
-                    <div class="col col-lg-2 mb-20">
-                        <h5 class="footer-title"><?php _e('Company', 'durel') ?></h5>
-                        <?php footer_menu(themeLocation: 'footer_menu_1', menuClass: 'footer-nav-link style-none') ?>
 
+<footer class="footer-modern bg-gray-900 text-white py-16">
+    <div class="container">
+        <div class="row g-4 g-lg-8 footer-top">
+            <!-- Company Info Column -->
+            <div class="col-md-6 col-lg-3">
+                <div class="footer-company-info">
+                    <div class="company-logo d-flex align-items-center mb-4">
+                        <?php
+                        if (!empty($contact_info['header_logo']['url'])) {
+                            echo '<div class="footer-logo">';
+                            echo '<img src="' . esc_url($contact_info['header_logo']['url']) . '" alt="' . esc_attr($contact_info['company_name'] ?: get_bloginfo('name')) . '"  style="max-height: 48px; width: auto;">';
+                            echo '</div>';
+                        }
+                        ?>
+                        <span class="company-name">
+                            <?php echo esc_html($contact_info['company_name'] ?: 'BMISP'); ?>
+                        </span>
                     </div>
-                    <div class="col col-lg-2 mb-20">
-                        <h5 class="footer-title"><?php _e('Support', 'durel') ?></h5>
-                        <?php footer_menu(themeLocation: 'footer_menu_2', menuClass: 'footer-nav-link style-none') ?>
-
-                    </div>
-                    <div class="col col-lg-2 mb-20">
-                        <h5 class="footer-title"><?php _e('Quick Links', 'durel') ?></h5>
-                        <?php footer_menu(themeLocation: 'footer_menu_3', menuClass: 'footer-nav-link style-none') ?>
-
-                    </div>
-                    <div class="col col-lg-2 mb-20">
-                        <h5 class="footer-title"><?php _e('Legal', 'durel') ?></h5>
-                        <?php footer_menu(themeLocation: 'footer_menu_4', menuClass: 'footer-nav-link style-none') ?>
-
-                    </div>
-                    <div class="col-12 col-lg-4 mb-20 footer-newsletter">
-                        <h5 class="footer-title"><?php _e('Office Address', 'durel') ?></h5>
-                        <?php if ($get_options['durel_ss_cu_address']): ?>
-                            <p class="mb-15"><i class="fas fa-map-marker-alt"></i>
-                                <?php _e($get_options['durel_ss_cu_address'], 'durel') ?></p>
+                    <p class="company-description text-gray-400">
+                        <?php echo esc_html($contact_info['description'] ?: 'Your trusted partner for high-speed fiber internet connectivity across Bangladesh.'); ?>
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Services Column -->
+            <div class="col-md-6 col-lg-3">
+                <div class="footer-section">
+                    <h3 class="footer-section-title">Services</h3>
+                    <?php footer_menu(themeLocation: 'footer_menu_1', menuClass: 'footer-links') ?>
+                </div>
+            </div>
+            
+            <!-- Quick Links Column -->
+            <div class="col-md-6 col-lg-3">
+                <div class="footer-section">
+                    <h3 class="footer-section-title">Quick Links</h3>
+                    <?php footer_menu(themeLocation: 'footer_menu_2', menuClass: 'footer-links') ?>
+                </div>
+            </div>
+            
+            <!-- Contact Info Column -->
+            <?php if ($contact_info['footer_show_contact']): ?>
+            <div class="col-md-6 col-lg-3">
+                <div class="footer-section">
+                    <h3 class="footer-section-title">Contact Info</h3>
+                    <div class="contact-info">
+                        <?php if (!empty($contact_info['phone'])): ?>
+                            <div class="contact-item d-flex align-items-center mb-3">
+                                <div class="contact-icon me-3">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <a href="tel:<?php echo esc_attr($contact_info['phone']); ?>" class="contact-text text-decoration-none">
+                                    <?php echo esc_html($contact_info['phone']); ?>
+                                </a>
+                            </div>
                         <?php endif; ?>
-                        <p><?php _e('Subscribe then get update regularly', 'durel') ?></p>
-                        <div class="subscribe-form">
-                            <?php echo do_shortcode('[contact-form-7 id="fa25b8a" title="Subscribe Form"]') ?>
-                        </div>
+                        
+                        <?php if (!empty($contact_info['email'])): ?>
+                            <div class="contact-item d-flex align-items-center mb-3">
+                                <div class="contact-icon me-3">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <a href="mailto:<?php echo esc_attr($contact_info['email']); ?>" class="contact-text text-decoration-none">
+                                    <?php echo esc_html($contact_info['email']); ?>
+                                </a>
+                            </div>
+                        <?php endif; ?>
+                        
+                        <?php if (!empty($contact_info['address'])): ?>
+                            <div class="contact-item d-flex align-items-center">
+                                <div class="contact-icon me-3">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <span class="contact-text">
+                                    <?php echo nl2br(esc_html($contact_info['address'])); ?>
+                                </span>
+                            </div>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
-            <!-- /.inner-wrapper -->
+            <?php endif; ?>
         </div>
-
-        <div class="footer-bottom-section">
-            <div class="container">
-                <div class="text-center text-lg-start d-lg-flex align-items-center justify-content-between">
-                    <div>
-                        <p class="mb-lg-0 copyright-text">&copy;
-                            <?php echo date('Y') . " " . $get_options['durel_ss_hf_copyright_text'] ?>
-                        </p>
-                    </div>
-
-                    <div class="social-menu">
-
-                        <?php
-                        $socialLinks = $get_options['durel_ss_cu_social_link_group'];
-
-                        if ($socialLinks):
+        
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+            <div class="d-grid grid-cols-2 align-items-center">
+                <p class="copyright-text">
+                    <?php echo esc_html($contact_info['copyright'] ?: '© ' . date('Y') . ' ' . $contact_info['company_name'] . '. All rights reserved.'); ?>
+                </p>
+                
+                <?php if ($contact_info['footer_show_social'] && !empty($contact_info['social_links'])): ?>
+                <div class="w-100">
+                    <div class="social-links">
+                        <ul class="social-links-list d-flex justify-content-center justify-content-lg-end gap-3">
+                            <?php foreach ($contact_info['social_links'] as $social):
+                                if (!empty($social['durel_ss_social_link']) && !empty($social['durel_ss_social_icon'])):
                             ?>
-                            <ul class="social-link">
-                                <?php foreach ($socialLinks as $socialLink):
-                                    if ($socialLink):
-                                        ?>
-                                        <li>
-                                            <a target="_blank" href="<?php echo $socialLink['durel_ss_cu_social_link'] ?>">
-                                                <i class="<?php echo $socialLink['durel_ss_cu_social_icon'] ?>"></i>
-                                            </a>
-                                        </li>
-                                        <?php
-                                    endif;
-                                endforeach; ?>
-                            </ul>
-                        <?php endif; ?>
-                    </div>
-                    <div>
-                        <p class="mb-lg-0 copyright-text">
-                            <?php _e('Made With ❤ by', 'durel') ?>
-                            <a target="_blank" href="https://deelko.com/"><?php _e('Deelko', 'durel') ?></a>
-                        </p>
+                                <li>
+                                    <a href="<?php echo esc_url($social['durel_ss_social_link']); ?>" 
+                                       target="_blank" 
+                                       class="social-link">
+                                        <i class="<?php echo esc_attr($social['durel_ss_social_icon']); ?>"></i>
+                                    </a>
+                                </li>
+                            <?php 
+                                endif;
+                            endforeach; ?>
+                        </ul>
                     </div>
                 </div>
+                <?php endif; ?>
             </div>
         </div>
     </div>
-</section>
+</footer>

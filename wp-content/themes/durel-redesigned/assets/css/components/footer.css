@@ -1,0 +1,264 @@
+/* ===== FOOTER SECTION ===== */
+
+footer {
+    background: var(--color-gray-900);
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.6) 100%);
+    pointer-events: none;
+}
+
+.footer-top {
+    padding: var(--space-12) 0;
+}
+
+/* Company Info Section */
+.footer-company-info {
+    position: relative;
+    z-index: 2;
+}
+
+.company-logo {
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--space-4);
+}
+
+.footer-logo {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    display: flex;
+    width: 3rem;
+    aspect-ratio: 1/1;
+    align-items: center;
+    justify-content: center;
+    margin-right: var(--space-3);
+}
+
+.company-name {
+    font-size: var(--text-3xl);
+    font-weight: var(--font-bold);
+    color: var(--white);
+}
+
+.company-description {
+    color: var(--color-gray-400);
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Footer Sections */
+.footer-section {
+    position: relative;
+    z-index: 2;
+}
+
+.footer-section-title {
+    font-size: var(--text-lg);
+    font-weight: var(--font-semibold);
+    color: var(--white);
+    margin-bottom: var(--space-4);
+    position: relative;
+}
+
+.footer-section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 30px;
+    height: 2px;
+    background: var(--primary-color);
+    border-radius: var(--radius-sm);
+}
+
+/* Footer Links */
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: var(--space-2);
+}
+
+.footer-links a {
+    color: var(--color-gray-400);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+    position: relative;
+}
+
+.footer-links a:hover {
+    color: var(--white);
+    transform: translateX(5px);
+}
+
+.footer-links a::before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.footer-links a:hover::before {
+    width: 100%;
+}
+
+/* Contact Info */
+.contact-info {
+    position: relative;
+    z-index: 2;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--space-3);
+}
+
+.contact-item:last-child {
+    margin-bottom: 0;
+}
+
+.contact-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: var(--space-3);
+}
+
+.contact-icon i {
+    font-size: 1rem;
+    color: var(--primary-color);
+}
+
+.contact-text {
+    color: var(--color-gray-400);
+    font-size: var(--text-sm);
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    border-top: 1px solid var(--color-gray-800);
+    padding: var(--space-4) 0;
+    position: relative;
+    z-index: 2;
+}
+
+.copyright-text {
+    color: var(--color-gray-400);
+    font-size: var(--text-sm);
+    margin: 0;
+}
+
+/* Social Links */
+.social-links {
+    position: relative;
+    z-index: 2;
+}
+
+.social-links-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    justify-content: flex-end;
+    gap: var(--space-3);
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-lg);
+    color: var(--color-gray-400);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.social-link:hover {
+    background: var(--primary-color);
+    color: var(--white);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    border-color: var(--primary-color);
+}
+
+.social-link i {
+    font-size: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 991.98px) {
+    .footer-modern {
+        padding: var(--space-12) 0;
+    }
+
+    .footer-section-title {
+        font-size: var(--text-lg);
+        margin-bottom: var(--space-3);
+    }
+
+    .company-name {
+        font-size: var(--text-xl);
+    }
+
+    .logo-icon {
+        width: 2rem;
+        height: 2rem;
+    }
+
+    .logo-icon i {
+        font-size: 1.25rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .footer-modern {
+        padding: var(--space-8) 0;
+    }
+
+    .social-links-list {
+        justify-content: center;
+    }
+
+    .copyright-text {
+        text-align: center;
+        margin-bottom: var(--space-3);
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .footer-modern {
+        background: var(--color-gray-950);
+    }
+
+    .footer-modern::before {
+        background: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.7) 100%);
+    }
+}

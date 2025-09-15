@@ -1,0 +1,99 @@
+/* BMISP Redesigned Theme - Component Styles */
+
+/* ===== NAVIGATION COMPONENTS ===== */
+
+
+
+
+/* ===== FORM COMPONENTS ===== */
+
+.form-control {
+    border: 1px solid var(--color-gray-300);
+    border-radius: var(--radius-md);
+    padding: var(--space-3);
+    font-size: var(--text-base);
+    transition: border-color var(--transition-normal);
+}
+
+.form-control:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+    outline: none;
+}
+
+/* ===== CARD COMPONENTS ===== */
+
+.primary-btn:focus {
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+}
+
+
+.primary-btn:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+
+.primary-btn:focus-visible:not(:focus-visible) {
+    outline: none;
+}
+
+
+
+
+.card {
+    background: white;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--color-gray-200);
+    overflow: hidden;
+}
+
+.card-header {
+    padding: var(--space-4);
+    border-bottom: 1px solid var(--color-gray-200);
+    background: var(--color-gray-50);
+}
+
+.card-body {
+    padding: var(--space-4);
+}
+
+.card-footer {
+    padding: var(--space-4);
+    border-top: 1px solid var(--color-gray-200);
+    background: var(--color-gray-50);
+}
+
+/* ===== ALERT COMPONENTS ===== */
+
+.alert {
+    padding: var(--space-4);
+    border-radius: var(--radius-md);
+    border: 1px solid;
+    margin-bottom: var(--space-4);
+}
+
+.alert-success {
+    background: var(--color-success);
+    border-color: var(--color-success);
+    color: white;
+}
+
+.alert-warning {
+    background: var(--color-warning);
+    border-color: var(--color-warning);
+    color: white;
+}
+
+.alert-error {
+    background: var(--color-error);
+    border-color: var(--color-error);
+    color: white;
+}
+
+.alert-info {
+    background: var(--color-info);
+    border-color: var(--color-info);
+    color: white;
+}

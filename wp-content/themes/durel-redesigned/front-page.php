@@ -28,6 +28,7 @@ get_header();
 <?php echo get_template_part('/templates/support-team-page-parts/support-team-section-slider'); ?>
 <!-- Team Member Section End  -->
 
+
 <!-- Company Activity Section Start  -->
 <?php echo get_template_part('/templates/home-page-parts/company-activity-section'); ?>
 <!-- Company Activity Section End  -->
@@ -36,13 +37,10 @@ get_header();
 <?php echo get_template_part('/templates/home-page-parts/client-review-section'); ?>
 <!-- Client Review Section End  -->
 
-<!-- Video Section Start  -->
-<?php echo get_template_part('/templates/home-page-parts/video-section'); ?>
-<!-- Video Section End  -->
 
-<!-- Client Brand Section Start  -->
-<?php echo get_template_part('/templates/home-page-parts/client-brand-section'); ?>
-<!-- Client Brand Section End  -->
+<!-- CTA Section Start  -->
+<?php echo get_template_part('/templates/home-page-parts/cta-section'); ?>
+<!-- CTA Section End  -->
 
 
 <?php

@@ -6,86 +6,127 @@ $clientReviewGroup = $get_options['durel_hp_cr_review_group'];
 if ($clientReviewGroup):
     ?>
 
-    <section class="feedback-section-three position-relative mt-40 mb-40">
-        <div class="container position-relative">
-            <div class="row">
-                <div class="col-xl-6 col-lg-7 col-md-8 m-auto">
-                    <?php if ($get_options['durel_hp_cr_section_title']): ?>
-                        <div class=" text-center">
-                            <img src="<?php echo get_template_directory_uri() ?>/assets/images/icon/icon_22.svg" alt=""
-                                class="lazy-img me-auto ms-auto mb-10" />
-                            <h2 class="fw-300 color-blue">
-                                <?php _e($get_options['durel_hp_cr_section_title'], 'durel') ?>
-                            </h2>
-                        </div>
-                    <?php endif; ?>
-                </div>
+    <section class="client-review-section py-20 bg-gradient-to-br from-gray-50 to-white">
+        <div class="container">
+            <div class="review-section-header">
+                <h2><?php _e($get_options['durel_hp_cr_section_title'] ?: 'What Our Clients Say', 'durel'); ?></h2>
+                <p><?php _e($get_options['durel_hp_cr_section_subtitle'] ?: 'Hear from our satisfied customers about their experience', 'durel'); ?></p>
             </div>
-
-            <div id="feedBack_carousel" class="carousel slide mt-30" data-bs-ride="carousel">
-                <div class="row">
-                    <div class="col-xxl-9 col-lg-8 col-md-10 m-auto">
-                        <div class="carousel-inner text-center">
-                            <?php
-                            $i = 1;
-                            foreach ($clientReviewGroup as $clientReview):
-                                ?>
-                                <div class="carousel-item <?php echo $i == 1 ? 'active' : '' ?>" data-bs-interval="1000000">
-                                    <?php if ($clientReview['durel_hp_cr_text']): ?>
-                                        <p>
-                                            <?php _e($clientReview['durel_hp_cr_text'], 'durel') ?>
-                                        </p>
-                                    <?php endif;
-                                    if ($clientReview['durel_hp_cr_name']):
-                                        ?>
-                                        <h4 class="d-inline-block position-relative name fw-500 text-lg">
-                                            <?php _e($clientReview['durel_hp_cr_name'], 'durel') ?> <span
-                                                class="fw-normal opacity-50">
-                                                <?php _e($clientReview['durel_hp_cr_designation'], 'durel') ?> </span>
-                                        </h4>
+            
+            <div class="reviews-slider-container">
+                <div class="reviews-slider">
+                    <?php
+                    foreach ($clientReviewGroup as $clientReview):
+                        $review_text = $clientReview['durel_hp_cr_text'] ?? '';
+                        $review_name = $clientReview['durel_hp_cr_name'] ?? '';
+                        $review_designation = $clientReview['durel_hp_cr_designation'] ?? '';
+                        $review_image = $clientReview['durel_hp_cr_img']['url'] ?? '';
+                        ?>
+                        
+                        <div class="review-slide">
+                            <div class="review-card">
+                                <div class="review-content">
+                                    <div class="review-quote">
+                                        <i class="fas fa-quote-left"></i>
+                                    </div>
+                                    <?php if ($review_text): ?>
+                                        <p class="review-text"><?php _e($review_text, 'durel'); ?></p>
                                     <?php endif; ?>
                                 </div>
-
-                                <?php
-                                $i++;
-                            endforeach; ?>
+                                
+                                <div class="review-author">
+                                    <?php if ($review_image): ?>
+                                        <div class="author-image">
+                                            <img src="<?php echo esc_url($review_image); ?>" 
+                                                 alt="<?php echo esc_attr($review_name); ?>"
+                                                 class="author-img">
+                                        </div>
+                                    <?php else: ?>
+                                        <div class="author-image-placeholder">
+                                            <i class="fas fa-user"></i>
+                                        </div>
+                                    <?php endif; ?>
+                                    
+                                    <div class="author-info">
+                                        <?php if ($review_name): ?>
+                                            <h4 class="author-name"><?php _e($review_name, 'durel'); ?></h4>
+                                        <?php endif; ?>
+                                        <?php if ($review_designation): ?>
+                                            <p class="author-designation"><?php _e($review_designation, 'durel'); ?></p>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+                                
+                                <div class="review-rating">
+                                    <div class="stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-
-                <button class="carousel-control-prev carousel-btn" type="button" data-bs-target="#feedBack_carousel"
-                    data-bs-slide="prev">
-                    <i class="bi bi-chevron-left"></i>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next carousel-btn" type="button" data-bs-target="#feedBack_carousel"
-                    data-bs-slide="next">
-                    <i class="bi bi-chevron-right"></i>
-                    <span class="visually-hidden">Next</span>
-                </button>
-
-                <div class="carousel-indicators">
-                    <?php
-                    $i = 1;
-                    foreach ($clientReviewGroup as $clientReview):
-                        if ($clientReview['durel_hp_cr_img']['url']):
-                            ?>
-                            <button type="button" data-bs-target="#feedBack_carousel" data-bs-slide-to="<?php echo $i - 1 ?>"
-                                class="<?php echo $i == 1 ? 'active' : '' ?>"
-                                aria-current="<?php echo $i == 1 ? 'true' : 'false' ?>" aria-label="Slide <?php echo $i ?>">
-                                <img src="<?php echo $clientReview['durel_hp_cr_img']['url'] ?>" alt=""
-                                    class="lazy-img rounded-circle" />
-                            </button>
-
-                            <?php
-                        endif;
-                        $i++;
-                    endforeach; ?>
-
-
+                        
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>
     </section>
+
+<!-- Client Review Slider Initialization Script -->
+<script>
+jQuery(document).ready(function() {
+    if (typeof jQuery.fn.slick !== 'undefined') {
+        jQuery('.reviews-slider').slick({
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            infinite: true,
+            autoplay: true,
+            autoplaySpeed: 4000,
+            speed: 600,
+            arrows: true,
+            prevArrow: '<button type="button" class="slick-prev reviews-slick-prev"><i class="fas fa-chevron-left"></i></button>',
+            nextArrow: '<button type="button" class="slick-next reviews-slick-next"><i class="fas fa-chevron-right"></i></button>',
+            dots: true,
+            cssEase: 'ease-in-out',
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1,
+                        arrows: true,
+                        dots: true
+                    }
+                },
+                {
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        arrows: true,
+                        dots: true
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        arrows: false,
+                        dots: true
+                    }
+                }
+            ]
+        });
+        
+        console.log('Client Review Slider initialized successfully');
+    } else {
+        console.error('Slick Slider is not loaded for client review section');
+    }
+});
+</script>
 
 <?php endif; ?>

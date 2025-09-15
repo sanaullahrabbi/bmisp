@@ -152,18 +152,20 @@ class Walker_Nav_Mobile_Menu extends Walker
 		}
 		$indent = ($depth) ? str_repeat($t, $depth) : '';
 
-		$classes = empty($menu_item->classes) ? array() : (array) $menu_item->classes;
-		$classes[] = 'menu-item-' . $menu_item->ID;
-		$classes[] = 'nav-item';
-
-
-
-		if (in_array('current_page_item', $classes)):
-			$classes[] = "active";
-		endif;
-		if (in_array('menu-item-has-children', $classes)):
-			$classes[] = "dropdown";
-		endif;
+		// Clean Bootstrap classes for mobile navigation items
+		$classes = array();
+		
+		// Add active state class
+		if (in_array('current-menu-item', $menu_item->classes) || in_array('current_page_item', $menu_item->classes)) {
+			$classes[] = 'nav-item active';
+		} else {
+			$classes[] = 'nav-item';
+		}
+		
+		// Add dropdown class if has children
+		if (in_array('menu-item-has-children', $menu_item->classes)) {
+			$classes[] = 'dropdown';
+		}
 
 		// Add custom class to <a> tag if its parent <li> has the class "dropdown"
 		$custom_class = '';

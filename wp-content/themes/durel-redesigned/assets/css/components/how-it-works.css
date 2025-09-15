@@ -1,0 +1,290 @@
+/* How It Works Section Styles */
+
+.how-it-works-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.how-it-works-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.how-it-works-header h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.how-it-works-header p {
+    font-size: 1.25rem;
+    color: #6b7280;
+    margin: 0;
+}
+
+.how-it-works-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.how-it-works-step {
+    position: relative;
+}
+
+.step-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    padding: 2rem 1rem;
+    transition: all 0.3s ease;
+}
+
+.step-content:hover {
+    transform: translateY(-5px);
+}
+
+.step-number {
+    position: relative;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.step-circle {
+    width: 5rem;
+    height: 5rem;
+    background: linear-gradient(135deg, #dc2626, #b91c1c);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 25px rgba(220, 38, 38, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 2;
+}
+
+.step-content:hover .step-circle {
+    transform: scale(1.1);
+    box-shadow: 0 15px 35px rgba(220, 38, 38, 0.4);
+}
+
+.step-number-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    line-height: 1;
+}
+
+.step-connector {
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, #fecaca, #fca5a5);
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+.step-info {
+    max-width: 280px;
+}
+
+.step-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+}
+
+.step-description {
+    color: #6b7280;
+    line-height: 1.6;
+    margin: 0;
+    font-size: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .how-it-works-steps {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .step-connector {
+        display: none;
+    }
+
+    .step-content {
+        padding: 1.5rem 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .how-it-works-header h2 {
+        font-size: 2rem;
+    }
+
+    .how-it-works-header p {
+        font-size: 1.125rem;
+    }
+
+    .how-it-works-header {
+        margin-bottom: 3rem;
+    }
+
+    .step-circle {
+        width: 4rem;
+        height: 4rem;
+    }
+
+    .step-number-text {
+        font-size: 1.25rem;
+    }
+
+    .step-title {
+        font-size: 1.125rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .how-it-works-section {
+        padding: 3rem 0;
+    }
+
+    .how-it-works-header h2 {
+        font-size: 1.75rem;
+    }
+
+    .how-it-works-header p {
+        font-size: 1rem;
+    }
+
+    .step-content {
+        padding: 1rem 0.5rem;
+    }
+
+    .step-circle {
+        width: 3.5rem;
+        height: 3.5rem;
+    }
+
+    .step-number-text {
+        font-size: 1.125rem;
+    }
+}
+
+/* Animation for step circles */
+@keyframes stepPulse {
+
+    0%,
+    100% {
+        box-shadow: 0 10px 25px rgba(220, 38, 38, 0.3);
+    }
+
+    50% {
+        box-shadow: 0 15px 35px rgba(220, 38, 38, 0.5);
+    }
+}
+
+.step-circle {
+    animation: stepPulse 3s ease-in-out infinite;
+}
+
+.step-content:hover .step-circle {
+    animation: none;
+}
+
+/* Alternative layout for desktop with horizontal connector */
+@media (min-width: 1025px) {
+    .how-it-works-steps {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        position: relative;
+    }
+
+    .how-it-works-step {
+        flex: 1;
+        position: relative;
+    }
+
+    .step-connector {
+        position: absolute;
+        top: 2.5rem;
+        left: calc(50% + 2.5rem);
+        right: calc(-50% + 2.5rem);
+        width: auto;
+        height: 2px;
+        background: linear-gradient(90deg, #fecaca, #fca5a5);
+        z-index: 1;
+    }
+
+    .how-it-works-step:last-child .step-connector {
+        display: none;
+    }
+}
+
+/* Enhanced hover effects */
+.step-content:hover .step-title {
+    color: #dc2626;
+    transition: color 0.3s ease;
+}
+
+.step-content:hover .step-description {
+    color: #374151;
+    transition: color 0.3s ease;
+}
+
+/* Focus states for accessibility */
+.step-circle:focus {
+    outline: 2px solid #dc2626;
+    outline-offset: 2px;
+}
+
+/* Loading animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.how-it-works-step {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.how-it-works-step:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.how-it-works-step:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.how-it-works-step:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.how-it-works-step:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.how-it-works-step:nth-child(5) {
+    animation-delay: 0.5s;
+}
