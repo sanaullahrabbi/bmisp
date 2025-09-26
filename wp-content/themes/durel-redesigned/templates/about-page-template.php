@@ -5,9 +5,20 @@ get_header();
 $get_options = get_option('durel_options');
 ?>
 
-<!-- Page Banner Section Start  -->
-<?php pageBannerSection(pageTitle: get_the_title()) ?>
-<!-- Page Banner Section End  -->
+<!-- Page Header Section Start  -->
+<?php 
+$page_title = $get_options['durel_ap_page_title'] ?? get_the_title();
+$page_subtitle = $get_options['durel_ap_page_subtitle'] ?? '';
+
+// Custom breadcrumbs for About page
+$breadcrumbs = array(
+    array('title' => 'Home', 'url' => home_url('/')),
+    array('title' => 'About Us', 'url' => false)
+);
+
+pageHeaderSection($page_title, $page_subtitle, $breadcrumbs);
+?>
+<!-- Page Header Section End  -->
 
 <!-- Mission & Vision Section Start  -->
 <?php echo get_template_part('/templates/about-page-parts/mission-vision-section'); ?>

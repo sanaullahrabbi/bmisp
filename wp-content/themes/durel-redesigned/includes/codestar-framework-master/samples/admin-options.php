@@ -385,38 +385,10 @@ CSF::createSection(
     "icon" => "fa fa-plus-circle",
     "fields" => array(
       array(
-        "id" => "durel_hp_ss_list",
-        "title" => "Add Service List :",
-        "type" => "group",
-        "fields" => array(
-          array(
-            "id" => "durel_hp_ss_name",
-            "title" => "Service Name :",
-            "type" => "text",
-          ),
-          array(
-            "id" => "durel_hp_ss_description",
-            "title" => "Service Description :",
-            "type" => "textarea",
-            "desc" => "Brief description of the service"
-          ),
-                      array(
-              "id" => "durel_hp_ss_icon",
-              "title" => "Icon :",
-              "type" => "icon",
-              "settings" => array(
-                'type' => 'fontawesome',
-                'height' => '300px',
-              ),
-            ),
-          array(
-            "id" => "durel_hp_ss_link",
-            "title" => "Service Page Link :",
-            "type" => "text",
-          ),
-        )
+        "type" => "notice",
+        "style" => "info",
+        "content" => "<strong>Service Configuration Moved!</strong><br><br>Service configuration has been moved to <strong>ISP Website → Services Page</strong> for better organization.<br><br>To configure services for the home page:<br>1. Go to <strong>ISP Website → Services Page</strong><br>2. Add your services with icons, descriptions, and slugs<br>3. Enable <strong>'Show on Home Page'</strong> for services you want on the home page<br>4. Set the <strong>'Display Order'</strong> to control the order they appear<br><br>This eliminates duplicate configuration and makes management much easier!"
       ),
-
     )
   )
 );
@@ -744,6 +716,30 @@ CSF::createSection(
     'icon' => 'fas fa-home'
   )
 );
+/* Page Header Section Start  */
+CSF::createSection(
+  $prefix,
+  array(
+    "parent" => "about_page",
+    "title" => "Page Header Section",
+    "icon" => "fas fa-heading",
+    "fields" => array(
+      array(
+        "id" => "durel_ap_page_title",
+        "title" => "Page Title :",
+        "type" => "text",
+        "desc" => "Custom page title for the About Us page header"
+      ),
+      array(
+        "id" => "durel_ap_page_subtitle",
+        "title" => "Page Subtitle :",
+        "type" => "text",
+        "desc" => "Subtitle text displayed below the main title"
+      ),
+    )
+  )
+);
+/* Page Header Section End  */
 /* Mission & Vision Section Start  */
 CSF::createSection(
   $prefix,
@@ -827,6 +823,106 @@ CSF::createSection(
 About Page Options End
 ================================= */
 /* ==============================
+Services Page Options Start
+================================ */
+CSF::createSection(
+  $prefix,
+  array(
+    "id" => "services_page",
+    "title" => "Services Page",
+    "icon" => "fas fa-concierge-bell",
+    "fields" => array(
+      array(
+        "id" => "durel_sp_section_title",
+        "title" => "Services Section Title :",
+        "type" => "text",
+        "default" => "Our Services",
+        "desc" => "Main title for the services section"
+      ),
+      array(
+        "id" => "durel_sp_section_subtitle",
+        "title" => "Services Section Subtitle :",
+        "type" => "text",
+        "default" => "Comprehensive internet solutions designed to meet all your connectivity needs",
+        "desc" => "Subtitle for the services section"
+      ),
+      array(
+        "id" => "durel_sp_show_service_overview",
+        "title" => "Show Service Overview Cards :",
+        "type" => "switcher",
+        "default" => true,
+        "desc" => "Display service category cards at the top"
+      ),
+      array(
+        "id" => "durel_sp_service_categories",
+        "title" => "Service Categories :",
+        "type" => "group",
+        "fields" => array(
+          array(
+            "id" => "durel_sp_service_name",
+            "title" => "Service Name :",
+            "type" => "text",
+            "desc" => "Name of the service category (e.g., Home Broadband, Business Service)"
+          ),
+          array(
+            "id" => "durel_sp_service_icon",
+            "title" => "Service Icon :",
+            "type" => "icon",
+            "desc" => "Icon for the service category"
+          ),
+          array(
+            "id" => "durel_sp_service_description",
+            "title" => "Service Description :",
+            "type" => "textarea",
+            "desc" => "Brief description of the service"
+          ),
+          array(
+            "id" => "durel_sp_service_slug",
+            "title" => "Service Slug :",
+            "type" => "text",
+            "desc" => "URL-friendly identifier (auto-generated from service name, but can be edited)"
+          ),
+          array(
+            "id" => "durel_sp_service_show_on_home",
+            "title" => "Show on Home Page :",
+            "type" => "switcher",
+            "default" => true,
+            "desc" => "Display this service on the home page"
+          ),
+          array(
+            "id" => "durel_sp_service_order",
+            "title" => "Display Order :",
+            "type" => "number",
+            "default" => 0,
+            "desc" => "Order for display (lower numbers appear first)"
+          ),
+        ),
+      ),
+      array(
+        "id" => "durel_sp_packages_per_row",
+        "title" => "Packages Per Row :",
+        "type" => "select",
+        "options" => array(
+          "3" => "3 packages per row",
+          "4" => "4 packages per row",
+          "2" => "2 packages per row"
+        ),
+        "default" => "3",
+        "desc" => "Number of packages to display per row"
+      ),
+      array(
+        "id" => "durel_sp_services_page_url",
+        "title" => "Services Page URL :",
+        "type" => "text",
+        "default" => "/services/",
+        "desc" => "URL of the services page (used for linking from home page service section)"
+      ),
+    ),
+  )
+);
+/* Services Page Options End */
+
+/* ==============================
 Pricing Page Options Start
 ================================ */
 CSF::createSection(
@@ -859,6 +955,15 @@ CSF::createSection(
             "id" => "durel_pp_package_name",
             "title" => "Package Name :",
             "type" => "text",
+          ),
+          array(
+            "id" => "durel_pp_package_service_category",
+            "title" => "Service Category :",
+            "type" => "select",
+            "options" => array(
+              "" => "Select a service category..."
+            ),
+            "desc" => "Select the service category for this package (configure services first in Services Page)"
           ),
           array(
             "id" => "durel_pp_short_description",

@@ -6,6 +6,7 @@ require_once get_template_directory() . '/includes/codestar-framework-master/cod
 require_once get_template_directory() . '/includes/codestar-framework-master/samples/admin-options.php';
 require_once get_template_directory() . '/includes/class-walker-nav-main-menu.php';
 require_once get_template_directory() . '/includes/class-walker-nav-mobile-menu.php';
+require_once get_template_directory() . '/includes/page-header-component.php';
 
 
 if (!function_exists('durel_redesigned_theme_setup')):
@@ -86,6 +87,191 @@ if (!function_exists('durel_get_contact_info')):
         }
         
         return $contact_info;
+    }
+endif;
+
+// Helper function to get service categories for admin dropdown
+if (!function_exists('durel_get_service_categories')):
+    function durel_get_service_categories() {
+        $options = get_option('durel_options');
+        $services = $options['durel_sp_service_categories'] ?? array();
+        
+        $categories = array();
+        if (!empty($services) && is_array($services)) {
+            foreach ($services as $service) {
+                if (isset($service['durel_sp_service_slug']) && isset($service['durel_sp_service_name'])) {
+                    $categories[$service['durel_sp_service_slug']] = $service['durel_sp_service_name'];
+                }
+            }
+        }
+        
+        return $categories;
+    }
+endif;
+
+// Function to dynamically populate service category options
+if (!function_exists('durel_service_category_options')):
+    function durel_service_category_options() {
+        return durel_get_service_categories();
+    }
+endif;
+
+// Hook to dynamically update service category options
+add_action('admin_init', 'durel_update_service_category_options');
+
+if (!function_exists('durel_update_service_category_options')):
+    function durel_update_service_category_options() {
+        // Only run on our admin pages
+        if (!isset($_GET['page']) || strpos($_GET['page'], 'isp-website') === false) {
+            return;
+        }
+        
+        // Get current service categories
+        $service_categories = durel_get_service_categories();
+        
+        // Always add the script, even if no categories exist
+        // This will be handled by JavaScript to update the select options dynamically
+        add_action('admin_footer', function() use ($service_categories) {
+            ?>
+            <script type="text/javascript">
+                jQuery(document).ready(function($) {
+                    // Function to update service category dropdowns
+                    function updateServiceCategoryDropdowns() {
+                        var categories = <?php echo json_encode($service_categories); ?>;
+                        
+                        // Update all service category select fields
+                        $('select[name*="durel_pp_package_service_category"]').each(function() {
+                            var $select = $(this);
+                            var currentValue = $select.val();
+                            
+                            // Clear existing options except the first empty one
+                            $select.find('option').not(':first').remove();
+                            
+                            // Add new options or show helpful message
+                            if (Object.keys(categories).length > 0) {
+                                $.each(categories, function(slug, name) {
+                                    $select.append($('<option>', {
+                                        value: slug,
+                                        text: name
+                                    }));
+                                });
+                                
+                                // Restore selected value if it exists
+                                if (currentValue && categories[currentValue]) {
+                                    $select.val(currentValue);
+                                }
+                            } else {
+                                $select.append($('<option>', {
+                                    value: '',
+                                    text: 'No services configured yet'
+                                }));
+                            }
+                        });
+                    }
+                    
+                    // Update on page load
+                    updateServiceCategoryDropdowns();
+                    
+                    // Update when new package groups are added
+                    $(document).on('click', '.csf-field-group-add', function() {
+                        setTimeout(updateServiceCategoryDropdowns, 500);
+                    });
+                    
+                    // Auto-generate slug from service name
+                    function generateSlug(text) {
+                        return text
+                            .toLowerCase()
+                            .trim()
+                            .replace(/[^a-z0-9\s-]/g, '') // Remove special characters
+                            .replace(/\s+/g, '-') // Replace spaces with hyphens
+                            .replace(/-+/g, '-') // Replace multiple hyphens with single
+                            .replace(/^-|-$/g, ''); // Remove leading/trailing hyphens
+                    }
+                    
+                    // Auto-fill slug when service name changes
+                    $(document).on('input', 'input[name*="durel_sp_service_name"]', function() {
+                        var $nameInput = $(this);
+                        var $slugInput = $nameInput.closest('.csf-field').siblings().find('input[name*="durel_sp_service_slug"]');
+                        
+                        if ($slugInput.length && !$slugInput.data('user-edited')) {
+                            var slug = generateSlug($nameInput.val());
+                            $slugInput.val(slug);
+                        }
+                    });
+                    
+                    // Mark slug as user-edited when manually changed
+                    $(document).on('input', 'input[name*="durel_sp_service_slug"]', function() {
+                        $(this).data('user-edited', true);
+                    });
+                    
+                    // Reset user-edited flag when new service group is added
+                    $(document).on('click', '.csf-field-group-add', function() {
+                        setTimeout(function() {
+                            $('input[name*="durel_sp_service_slug"]').data('user-edited', false);
+                        }, 500);
+                    });
+                    
+                    // Update when service categories change (with delay to allow save)
+                    $(document).on('change', 'input[name*="durel_sp_service_slug"], input[name*="durel_sp_service_name"]', function() {
+                        setTimeout(function() {
+                            // Reload the page to get updated categories
+                            if (confirm('Service categories have been updated. Reload page to see changes in package dropdowns?')) {
+                                window.location.reload();
+                            }
+                        }, 2000);
+                    });
+                });
+            </script>
+            <?php
+        });
+    }
+endif;
+
+// Flush rewrite rules on theme activation
+add_action('after_switch_theme', 'durel_flush_rewrite_rules');
+
+if (!function_exists('durel_flush_rewrite_rules')):
+    function durel_flush_rewrite_rules() {
+        durel_add_service_rewrite_rules();
+        flush_rewrite_rules();
+    }
+endif;
+
+// Add custom rewrite rules for service pages
+add_action('init', 'durel_add_service_rewrite_rules');
+
+if (!function_exists('durel_add_service_rewrite_rules')):
+    function durel_add_service_rewrite_rules() {
+        add_rewrite_rule(
+            '^service/([^/]+)/?$',
+            'index.php?service_slug=$matches[1]',
+            'top'
+        );
+    }
+endif;
+
+// Add query vars for service pages
+add_filter('query_vars', 'durel_add_service_query_vars');
+
+if (!function_exists('durel_add_service_query_vars')):
+    function durel_add_service_query_vars($vars) {
+        $vars[] = 'service_slug';
+        return $vars;
+    }
+endif;
+
+// Handle service page template loading
+add_filter('template_include', 'durel_service_template_include');
+
+if (!function_exists('durel_service_template_include')):
+    function durel_service_template_include($template) {
+        if (get_query_var('service_slug')) {
+            $service_template = locate_template('templates/service-detail-page-template.php');
+            if ($service_template) {
+                return $service_template;
+            }
+        }
+        return $template;
     }
 endif;
 
