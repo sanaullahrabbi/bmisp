@@ -21,8 +21,6 @@ if (!function_exists('durel_redesigned_theme_setup')):
                 'main_menu' => __('Main Menu', 'durel-redesigned'),
                 'footer_menu_1' => __('Footer Menu 1', 'durel-redesigned'),
                 'footer_menu_2' => __('Footer Menu 2', 'durel-redesigned'),
-                'footer_menu_3' => __('Footer Menu 3', 'durel-redesigned'),
-                'footer_menu_4' => __('Footer Menu 4', 'durel-redesigned'),
             )
         );
         add_theme_support(
@@ -243,7 +241,7 @@ add_action('init', 'durel_add_service_rewrite_rules');
 if (!function_exists('durel_add_service_rewrite_rules')):
     function durel_add_service_rewrite_rules() {
         add_rewrite_rule(
-            '^service/([^/]+)/?$',
+            '^services/([^/]+)/?$',
             'index.php?service_slug=$matches[1]',
             'top'
         );
@@ -272,6 +270,76 @@ if (!function_exists('durel_service_template_include')):
             }
         }
         return $template;
+    }
+endif;
+
+// Add custom rewrite rules for hosting pages
+add_action('init', 'durel_add_hosting_rewrite_rules');
+
+if (!function_exists('durel_add_hosting_rewrite_rules')):
+    function durel_add_hosting_rewrite_rules() {
+        add_rewrite_rule(
+            '^hosting/([^/]+)/?$',
+            'index.php?hosting_service_slug=$matches[1]',
+            'top'
+        );
+    }
+endif;
+
+// Add query vars for hosting pages
+add_filter('query_vars', 'durel_add_hosting_query_vars');
+
+if (!function_exists('durel_add_hosting_query_vars')):
+    function durel_add_hosting_query_vars($vars) {
+        $vars[] = 'hosting_service_slug';
+        return $vars;
+    }
+endif;
+
+// Handle hosting page template loading
+add_filter('template_include', 'durel_hosting_template_include');
+
+if (!function_exists('durel_hosting_template_include')):
+    function durel_hosting_template_include($template) {
+        if (get_query_var('hosting_service_slug')) {
+            $hosting_template = locate_template('templates/hosting-detail-page-template.php');
+            if ($hosting_template) {
+                return $hosting_template;
+            }
+        }
+        return $template;
+    }
+endif;
+
+// Helper function to check if a service is an internet service
+if (!function_exists('durel_is_internet_service')):
+    function durel_is_internet_service($service) {
+        return isset($service['durel_sp_service_is_internet']) && $service['durel_sp_service_is_internet'] == true;
+    }
+endif;
+
+// Helper function to check if a package belongs to an internet service
+if (!function_exists('durel_is_internet_package')):
+    function durel_is_internet_package($package, $service) {
+        return durel_is_internet_service($service);
+    }
+endif;
+
+// Helper function to get internet packages only
+if (!function_exists('durel_get_internet_packages')):
+    function durel_get_internet_packages($services) {
+        $internet_packages = [];
+        foreach ($services as $service) {
+            if (durel_is_internet_service($service)) {
+                $service_packages = $service['durel_sp_service_packages'] ?? [];
+                foreach ($service_packages as $package) {
+                    $package['service_name'] = $service['durel_sp_service_name'] ?? '';
+                    $package['service_slug'] = $service['durel_sp_service_slug'] ?? '';
+                    $internet_packages[] = $package;
+                }
+            }
+        }
+        return $internet_packages;
     }
 endif;
 

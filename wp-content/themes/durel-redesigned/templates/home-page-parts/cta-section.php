@@ -16,7 +16,7 @@ $get_options = get_option('durel_options');
             </p>
             
             <div class="cta-buttons">
-                <a href="<?php echo esc_url($get_options['durel_hp_cta_primary_button_link'] ?: '#pricing'); ?>" 
+                <a href="<?php echo esc_url($get_options['durel_hp_cta_primary_button_link'] ?: '#packages'); ?>" 
                    class="cta-primary-btn">
                     <svg class="cta-btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>

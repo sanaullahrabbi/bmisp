@@ -3,6 +3,7 @@
 .team-section {
     position: relative;
     overflow: hidden;
+    background-color: var(--color-gray-50);
 }
 
 .team-section-header {
@@ -43,7 +44,7 @@
 
 .team-slide .team-member {
     margin: 0 auto;
-    max-width: 300px;
+    /* max-width: 300px; */
 }
 
 .team-member {
@@ -58,8 +59,8 @@
 .member-image-container {
     position: relative;
     margin: 0 auto 1.5rem;
-    width: 12rem;
-    height: 12rem;
+    width: 10rem;
+    height: 10rem;
     border-radius: 50%;
     overflow: hidden;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
@@ -85,25 +86,12 @@
 .member-image-placeholder {
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+    background: var(--white);
     display: flex;
     align-items: center;
     justify-content: center;
     color: #9ca3af;
     font-size: 3rem;
-}
-
-.member-image-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(220, 38, 38, 0.2), transparent);
-    border-radius: 50%;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.team-member:hover .member-image-overlay {
-    opacity: 1;
 }
 
 .member-info {
@@ -131,80 +119,6 @@
     line-height: 1.4;
 }
 
-/* Slider Navigation */
-.team-slick-prev,
-.team-slick-next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 10;
-    background: #dc2626;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
-}
-
-.team-slick-prev:hover,
-.team-slick-next:hover {
-    background: #b91c1c;
-    transform: translateY(-50%) scale(1.1);
-    box-shadow: 0 6px 16px rgba(220, 38, 38, 0.4);
-}
-
-.team-slick-prev {
-    left: -25px;
-}
-
-.team-slick-next {
-    right: -25px;
-}
-
-.team-slick-prev i,
-.team-slick-next i {
-    font-size: 1.2rem;
-}
-
-/* Slider Dots */
-.team-slider .slick-dots {
-    position: static;
-    margin-top: 2rem;
-    text-align: center;
-}
-
-.team-slider .slick-dots li {
-    display: inline-block;
-    margin: 0 5px;
-}
-
-.team-slider .slick-dots li button {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    border: none;
-    background: #d1d5db;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 0;
-    padding: 0;
-}
-
-.team-slider .slick-dots li.slick-active button {
-    background: #dc2626;
-    transform: scale(1.2);
-}
-
-.team-slider .slick-dots li button:hover {
-    background: #dc2626;
-    transform: scale(1.1);
-}
 
 /* Responsive Design */
 @media (max-width: 1024px) {
@@ -416,4 +330,8 @@
 .team-section .container {
     position: relative;
     z-index: 1;
+}
+
+.team-slider .slick-track {
+    padding: 2rem 0;
 }

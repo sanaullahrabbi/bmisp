@@ -3,6 +3,7 @@
 .company-activity-section {
     position: relative;
     overflow: hidden;
+    background: var(--white);
 }
 
 .activity-content {
@@ -27,22 +28,20 @@
 .stat-card {
     text-align: center;
     padding: 1.5rem;
-    background: linear-gradient(135deg, #fef2f2 0%, #f9fafb 100%);
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
     border-radius: 1rem;
-    transition: all 0.3s ease;
-    border: 1px solid #f3f4f6;
+    transition: all 0.5s ease;
 }
 
 .stat-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1);
-    background: linear-gradient(135deg, #fef2f2 0%, #f3f4f6 100%);
 }
 
 .stat-icon {
     width: 3rem;
     height: 3rem;
-    background: #dc2626;
+    background: var(--primary-dark);
     border-radius: 0.75rem;
     display: flex;
     align-items: center;
@@ -53,25 +52,25 @@
 
 .stat-card:hover .stat-icon {
     transform: scale(1.1);
-    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+    box-shadow: 0 4px 12px var(--primary-dark);
 }
 
 .stat-icon i {
     font-size: 1.5rem;
-    color: white;
+    color: var(--white);
 }
 
 .stat-number {
     font-size: 1.875rem;
     font-weight: 700;
-    color: #1f2937;
+    color: var(--white);
     margin: 0 0 0.5rem 0;
     line-height: 1;
 }
 
 .stat-label {
     font-size: 1rem;
-    color: #6b7280;
+    color: var(--white);
     margin: 0;
     font-weight: 500;
 }
@@ -86,14 +85,13 @@
 .content-title {
     font-size: 2.25rem;
     font-weight: 700;
-    color: #1f2937;
     margin: 0;
     line-height: 1.2;
 }
 
 .content-description {
     font-size: 1.25rem;
-    color: #6b7280;
+    color: var(--text-secondary);
     margin: 0;
     line-height: 1.6;
 }
@@ -104,12 +102,12 @@
     gap: 1rem;
     font-size: 1.125rem;
     font-weight: 500;
-    color: #1f2937;
+    color: var(--text-secondary);
 }
 
 .content-guarantee i {
     font-size: 2rem;
-    color: #dc2626;
+    color: var(--primary-color);
 }
 
 /* Responsive Design */
@@ -260,25 +258,6 @@
 
 /* Focus states for accessibility */
 .stat-card:focus-within {
-    outline: 2px solid #dc2626;
+    outline: 2px solid var(--primary-color);
     outline-offset: 2px;
-}
-
-/* Subtle background pattern */
-.company-activity-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: radial-gradient(circle at 20% 50%, rgba(220, 38, 38, 0.03) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(220, 38, 38, 0.03) 0%, transparent 50%);
-    pointer-events: none;
-    z-index: 0;
-}
-
-.company-activity-section .container {
-    position: relative;
-    z-index: 1;
 }

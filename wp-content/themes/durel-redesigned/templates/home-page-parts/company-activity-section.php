@@ -6,7 +6,7 @@ $activityGroup = $get_options['durel_hp_ca_list'];
 if ($activityGroup):
     ?>
 
-    <section class="company-activity-section py-20 bg-white">
+    <section class="company-activity-section py-20">
         <div class="container">
             <div class="activity-content">
                 <div class="activity-stats">

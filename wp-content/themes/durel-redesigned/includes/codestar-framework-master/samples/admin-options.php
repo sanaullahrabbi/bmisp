@@ -666,8 +666,8 @@ CSF::createSection(
         "id" => "durel_hp_cta_primary_button_link",
         "title" => "Primary Button Link :",
         "type" => "text",
-        "default" => "#pricing",
-        "desc" => "URL for the primary button (e.g., #pricing, /plans)"
+        "default" => "#packages",
+        "desc" => "URL for the primary button (e.g., #packages, /packages)"
       ),
       array(
         "id" => "durel_hp_cta_secondary_button_text",
@@ -702,6 +702,46 @@ CSF::createSection(
   )
 );
 /* CTA Section End  */
+
+/* Packages Section Start  */
+CSF::createSection(
+  $prefix,
+  array(
+    "parent" => "home_page",
+    "title" => "Packages Section",
+    "icon" => "fa fa-box-open",
+    "fields" => array(
+      array(
+        "id" => "durel_hp_packages_section_title",
+        "title" => "Packages Section Title :",
+        "type" => "text",
+        "default" => "Our Packages",
+        "desc" => "Main title for the packages section on homepage"
+      ),
+      array(
+        "id" => "durel_hp_packages_section_subtitle",
+        "title" => "Packages Section Subtitle :",
+        "type" => "text",
+        "default" => "Choose the perfect package for your needs",
+        "desc" => "Subtitle for the packages section on homepage"
+      ),
+      array(
+        "id" => "durel_hp_packages_show_internet_only",
+        "title" => "Show Only Internet Packages :",
+        "type" => "switcher",
+        "default" => true,
+        "desc" => "Display only internet/bandwidth packages on the homepage (packages from services marked as internet services)"
+      ),
+      array(
+        "type" => "notice",
+        "style" => "info",
+        "content" => "<strong>Package Configuration:</strong><br><br>Packages are now configured within each service category in <strong>ISP Website → Services Page</strong>.<br><br>To show packages on the homepage:<br>1. Go to <strong>ISP Website → Services Page</strong><br>2. Add packages to your service categories<br>3. Enable <strong>'Display on Homepage'</strong> for packages you want to feature<br><br>This creates a unified system where packages belong to services and can be displayed anywhere!"
+      ),
+    )
+  )
+);
+/* Packages Section End  */
+
 /* ==============================
 Home Page Options End
 ================================= */
@@ -890,11 +930,65 @@ CSF::createSection(
             "desc" => "Display this service on the home page"
           ),
           array(
-            "id" => "durel_sp_service_order",
-            "title" => "Display Order :",
-            "type" => "number",
-            "default" => 0,
-            "desc" => "Order for display (lower numbers appear first)"
+            "id" => "durel_sp_service_is_internet",
+            "title" => "Is Internet Service :",
+            "type" => "switcher",
+            "default" => false,
+            "desc" => "Check if this is an internet/bandwidth service (all packages will be treated as internet packages)"
+          ),
+          array(
+            "id" => "durel_sp_service_packages",
+            "title" => "Service Packages :",
+            "type" => "group",
+            "desc" => "Add packages for this service category",
+            "fields" => array(
+              array(
+                "id" => "durel_sp_package_name",
+                "title" => "Package Name :",
+                "type" => "text",
+                "desc" => "Name of the package (e.g., Basic, Standard, Premium)"
+              ),
+              array(
+                "id" => "durel_sp_package_specs",
+                "title" => "Package Specifications :",
+                "type" => "text",
+                "desc" => "Package specifications (e.g., 50 Mbps, 05 Extensions, 1GB Storage)"
+              ),
+              array(
+                "id" => "durel_sp_package_price",
+                "title" => "Price Per Month (TK) :",
+                "type" => "text",
+                "desc" => "Monthly price in Taka"
+              ),
+              array(
+                "id" => "durel_sp_package_popular",
+                "title" => "Mark as Popular :",
+                "type" => "switcher",
+                "default" => false,
+                "desc" => "Mark this package as the most popular option"
+              ),
+              array(
+                "id" => "durel_sp_package_display_homepage",
+                "title" => "Display on Homepage :",
+                "type" => "switcher",
+                "default" => false,
+                "desc" => "Show this package on the homepage service section"
+              ),
+              array(
+                "id" => "durel_sp_package_features",
+                "title" => "Package Features :",
+                "type" => "group",
+                "desc" => "Add features/benefits for this package",
+                "fields" => array(
+                  array(
+                    "id" => "durel_sp_package_feature_text",
+                    "title" => "Feature :",
+                    "type" => "text",
+                    "desc" => "Feature or benefit included in this package"
+                  ),
+                )
+              ),
+            ),
           ),
         ),
       ),
@@ -923,90 +1017,152 @@ CSF::createSection(
 /* Services Page Options End */
 
 /* ==============================
-Pricing Page Options Start
+Hosting Page Options Start
 ================================ */
 CSF::createSection(
   $prefix,
   array(
-    "id" => "pricing_page",
-    "title" => "Pricing Page",
-    "icon" => "fas fa-box-open",
+    "id" => "hosting_page",
+    "title" => "Hosting Page",
+    "icon" => "fas fa-server",
     "fields" => array(
       array(
-        "id" => "durel_pp_section_title",
-        "title" => "Pricing Section Title :",
+        "id" => "durel_h_section_title",
+        "title" => "Hosting Section Title :",
         "type" => "text",
-        "default" => "Pricing Plans",
-        "desc" => "Main title for the pricing section"
+        "default" => "Hosting Solutions",
+        "desc" => "Main title for the hosting section"
       ),
       array(
-        "id" => "durel_pp_section_subtitle",
-        "title" => "Pricing Section Subtitle :",
+        "id" => "durel_h_section_subtitle",
+        "title" => "Hosting Section Subtitle :",
         "type" => "text",
-        "default" => "Choose the perfect plan for your needs",
-        "desc" => "Subtitle for the pricing section"
+        "default" => "Professional hosting services for your online presence",
+        "desc" => "Subtitle for the hosting section"
       ),
       array(
-        "id" => "durel_pp_package_list",
-        "title" => "Add Pricing Plan :",
+        "id" => "durel_h_show_service_overview",
+        "title" => "Show Service Overview Cards :",
+        "type" => "switcher",
+        "default" => true,
+        "desc" => "Display hosting category cards at the top"
+      ),
+      array(
+        "id" => "durel_h_service_categories",
+        "title" => "Hosting Categories :",
         "type" => "group",
         "fields" => array(
           array(
-            "id" => "durel_pp_package_name",
-            "title" => "Package Name :",
+            "id" => "durel_h_service_name",
+            "title" => "Service Name :",
             "type" => "text",
+            "desc" => "Name of the hosting category (e.g., Web Hosting, VPS Hosting, Dedicated Servers)"
           ),
           array(
-            "id" => "durel_pp_package_service_category",
-            "title" => "Service Category :",
-            "type" => "select",
-            "options" => array(
-              "" => "Select a service category..."
-            ),
-            "desc" => "Select the service category for this package (configure services first in Services Page)"
+            "id" => "durel_h_service_icon",
+            "title" => "Service Icon :",
+            "type" => "icon",
+            "desc" => "Icon for the hosting category"
           ),
           array(
-            "id" => "durel_pp_short_description",
-            "title" => "Short Description :",
+            "id" => "durel_h_service_description",
+            "title" => "Service Description :",
+            "type" => "textarea",
+            "desc" => "Brief description of the hosting service"
+          ),
+          array(
+            "id" => "durel_h_service_slug",
+            "title" => "Service Slug :",
             "type" => "text",
+            "desc" => "URL-friendly identifier (auto-generated from service name, but can be edited)"
           ),
           array(
-            "id" => "durel_pp_package_internet",
-            "title" => "Package Internet (Mbps) :",
-            "type" => "text",
-          ),
-          array(
-            "id" => "durel_pp_package_price",
-            "title" => "Price Per Month (TK) :",
-            "type" => "text",
-          ),
-          array(
-            "id" => "durel_pp_package_popular",
-            "title" => "Mark as Popular Plan :",
+            "id" => "durel_h_service_show_on_home",
+            "title" => "Show on Home Page :",
             "type" => "switcher",
-            "default" => false,
-            "desc" => "Enable this to mark this plan as the most popular plan with special styling",
+            "default" => true,
+            "desc" => "Display this hosting service on the home page"
           ),
           array(
-            "id" => "durel_pp_package_offer_list",
-            "title" => "Add Package Offer Points :",
+            "id" => "durel_h_service_packages",
+            "title" => "Hosting Packages :",
             "type" => "group",
+            "desc" => "Add packages for this hosting category",
             "fields" => array(
               array(
-                "id" => "durel_pp_package_offer_title",
-                "title" => "Package Offer Point :",
+                "id" => "durel_h_package_name",
+                "title" => "Package Name :",
                 "type" => "text",
+                "desc" => "Name of the package (e.g., Basic Hosting, Premium Hosting, Enterprise)"
               ),
-            )
+              array(
+                "id" => "durel_h_package_specs",
+                "title" => "Package Specifications :",
+                "type" => "text",
+                "desc" => "Package specifications (e.g., 10GB Storage, 1 CPU, 2GB RAM)"
+              ),
+              array(
+                "id" => "durel_h_package_price",
+                "title" => "Price (TK) :",
+                "type" => "text",
+                "desc" => "Price in Taka"
+              ),
+              array(
+                "id" => "durel_h_package_popular",
+                "title" => "Mark as Popular :",
+                "type" => "switcher",
+                "default" => false,
+                "desc" => "Mark this package as the most popular option"
+              ),
+              array(
+                "id" => "durel_h_package_display_homepage",
+                "title" => "Display on Homepage :",
+                "type" => "switcher",
+                "default" => false,
+                "desc" => "Show this package on the homepage hosting section"
+              ),
+              array(
+                "id" => "durel_h_package_features",
+                "title" => "Package Features :",
+                "type" => "group",
+                "desc" => "Add features/benefits for this package",
+                "fields" => array(
+                  array(
+                    "id" => "durel_h_package_feature_text",
+                    "title" => "Feature :",
+                    "type" => "text",
+                    "desc" => "Feature or benefit included in this package"
+                  ),
+                )
+              ),
+            ),
           ),
         ),
+      ),
+      array(
+        "id" => "durel_h_packages_per_row",
+        "title" => "Packages Per Row :",
+        "type" => "select",
+        "options" => array(
+          "3" => "3 packages per row",
+          "4" => "4 packages per row",
+          "2" => "2 packages per row"
+        ),
+        "default" => "3",
+        "desc" => "Number of packages to display per row"
+      ),
+      array(
+        "id" => "durel_h_services_page_url",
+        "title" => "Hosting Page URL :",
+        "type" => "text",
+        "default" => "/hosting/",
+        "desc" => "URL of the hosting page (used for linking from home page)"
       ),
     ),
   )
 );
-/* ==============================
-Pricing Page Options End
-================================ */
+/* Hosting Page Options End */
+
 /* ==============================
 Pay Bill Page Options Start
 ================================ */

@@ -7,13 +7,14 @@
 @import url('components/misc.css');
 @import url('components/button.css');
 @import url('components.css');
-
+@import url('slick.css');
 
 @import url('components/navbar.css');
 @import url('components/hero-banner.css');
 @import url('components/services.css');
 @import url('components/notice-section.css');
-@import url('components/pricing.css');
+@import url('components/packages.css');
+@import url('components/hosting.css');
 @import url('components/how-it-works.css');
 @import url('components/team-section.css');
 @import url('components/company-activity.css');

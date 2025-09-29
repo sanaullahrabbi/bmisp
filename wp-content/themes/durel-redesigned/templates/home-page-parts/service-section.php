@@ -6,22 +6,17 @@ $get_options = get_option('durel_options');
 $all_services = $get_options['durel_sp_service_categories'] ?? [];
 $services_page_url = $get_options['durel_sp_services_page_url'] ?? '/services/';
 
-// Filter services that should show on home page and sort by order
+// Filter services that should show on home page
 $home_services = array_filter($all_services, function($service) {
     return isset($service['durel_sp_service_show_on_home']) && $service['durel_sp_service_show_on_home'] == true;
 });
 
-// Sort by order
-usort($home_services, function($a, $b) {
-    $order_a = isset($a['durel_sp_service_order']) ? (int)$a['durel_sp_service_order'] : 0;
-    $order_b = isset($b['durel_sp_service_order']) ? (int)$b['durel_sp_service_order'] : 0;
-    return $order_a - $order_b;
-});
+// Services are already sorted by the admin interface drag-and-drop functionality
 
 if (!empty($home_services)):
     ?>
 
-    <section class="service-section bg-white">
+    <section class="service-section">
         <div class="container">
             <div class="text-center mb-5">
                 <h2 class="service-section-title">Our Services</h2>
@@ -64,7 +59,7 @@ if (!empty($home_services)):
                                 
                                 <?php 
                                 // Generate URL to individual service page
-                                $final_link = home_url('/service/' . $service_slug . '/');
+                                $final_link = home_url('/services/' . $service_slug . '/');
                                 ?>
                                 <a href="<?php echo esc_url($final_link); ?>" class="service-link">
                                     View Packages <svg class="ms-2" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">

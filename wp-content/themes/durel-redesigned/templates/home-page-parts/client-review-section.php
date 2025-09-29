@@ -6,7 +6,7 @@ $clientReviewGroup = $get_options['durel_hp_cr_review_group'];
 if ($clientReviewGroup):
     ?>
 
-    <section class="client-review-section py-20 bg-gradient-to-br from-gray-50 to-white">
+    <section class="client-review-section py-20">
         <div class="container">
             <div class="review-section-header">
                 <h2><?php _e($get_options['durel_hp_cr_section_title'] ?: 'What Our Clients Say', 'durel'); ?></h2>

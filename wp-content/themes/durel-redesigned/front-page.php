@@ -15,9 +15,13 @@ get_header();
 <?php echo get_template_part('/templates/home-page-parts/service-section'); ?>
 <!-- Service Section End -->
 
-<!-- Pricing Section Start  -->
-<?php echo get_template_part('/templates/pricing-page-parts/pricing-section'); ?>
-<!-- Pricing Section End  -->
+<!-- Packages Section Start  -->
+<?php echo get_template_part('/templates/home-page-parts/packages-section'); ?>
+<!-- Packages Section End  -->
+
+<!-- Hosting Section Start -->
+<?php echo get_template_part('/templates/home-page-parts/home-hosting-section'); ?>
+<!-- Hosting Section End -->
 
 <!-- How It Works Section Start  -->
 <?php echo get_template_part('/templates/home-page-parts/how-it-work-section'); ?>

@@ -6,7 +6,7 @@ $howItWorkGroup = $get_options['durel_hp_hiw_list'];
 if ($howItWorkGroup):
     ?>
 
-    <section class="how-it-works-section py-20 bg-white">
+    <section class="how-it-works-section py-20">
         <div class="container">
             <div class="how-it-works-header">
                 <h2><?php _e($get_options['durel_hp_hiw_title'] ?: 'How It Works', 'durel') ?></h2>

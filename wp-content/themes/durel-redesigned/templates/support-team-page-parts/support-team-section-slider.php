@@ -2,7 +2,7 @@
 /* Display Support Team Member Section */
 $get_options = get_option('durel_options');
 ?>
-<section class="team-section py-20 bg-gradient-to-br from-gray-50 to-white">
+<section class="team-section py-20">
     <div class="container">
         <div class="team-section-header">
             <h2><?php _e($get_options['durel_hp_team_section_title'] ?: 'Talented Team Members', 'durel') ?></h2>
@@ -69,7 +69,7 @@ $get_options = get_option('durel_options');
 jQuery(document).ready(function() {
     if (typeof jQuery.fn.slick !== 'undefined') {
         jQuery('.team-slider').slick({
-            slidesToShow: 3,
+            slidesToShow: 4,
             slidesToScroll: 1,
             infinite: true,
             autoplay: true,

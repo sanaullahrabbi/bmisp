@@ -1,0 +1,428 @@
+/* ==========================================================================
+   BMISP REDESIGNED THEME - HOSTING SECTION
+   ========================================================================== */
+
+/* ==========================================================================
+   Section Layout
+   ========================================================================== */
+.hosting-section {
+    padding: 5rem 0;
+    background: var(--color-primary-500);
+    overflow: hidden;
+}
+
+/* ==========================================================================
+   Section Header
+   ========================================================================== */
+.hosting-section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--white);
+}
+
+.hosting-section-header h2 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.hosting-section-header p {
+    font-size: 1.25rem;
+    margin: 0;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ==========================================================================
+   Hosting Grid
+   ========================================================================== */
+.hosting-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+/* ==========================================================================
+   Hosting Card
+   ========================================================================== */
+.hosting-card {
+    background: var(--white);
+    border: 1px solid var(--color-gray-200);
+    border-radius: var(--radius-xl);
+    padding: 2rem;
+    text-align: left;
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.hosting-card.featured {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: var(--white);
+    border-color: #9333ea;
+}
+
+.hosting-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.hosting-card:not(.featured):hover {
+    border-color: var(--primary-color);
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: var(--white);
+}
+
+/* Hosting Icon */
+.hosting-icon {
+    margin-bottom: 1.5rem;
+    transition: color 0.3s ease;
+    text-align: left;
+}
+
+.hosting-icon i {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+}
+
+.hosting-card.featured .hosting-icon i {
+    color: var(--white);
+}
+
+.hosting-card:not(.featured):hover .hosting-icon i {
+    color: var(--white);
+}
+
+/* Hosting Title */
+.hosting-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+    color: var(--text-primary);
+    transition: color 0.3s ease;
+}
+
+.hosting-card.featured .hosting-title {
+    color: var(--white);
+}
+
+.hosting-card:not(.featured):hover .hosting-title {
+    color: var(--white);
+}
+
+/* Hosting Description */
+.hosting-description {
+    color: var(--text-gray);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+}
+
+.hosting-card.featured .hosting-description {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.hosting-card:not(.featured):hover .hosting-description {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Hosting Button */
+.hosting-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: transparent;
+    color: var(--primary-color);
+    border: none;
+    padding: 0;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+    font-size: 1rem;
+    justify-content: flex-start;
+}
+
+.hosting-btn:hover {
+    color: var(--primary-dark);
+}
+
+.hosting-card.featured .hosting-btn {
+    color: var(--white);
+}
+
+.hosting-card.featured .hosting-btn:hover {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.hosting-card:not(.featured):hover .hosting-btn {
+    color: var(--white);
+}
+
+.hosting-card:not(.featured):hover .hosting-btn:hover {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.hosting-btn-icon {
+    transition: transform 0.3s ease;
+}
+
+.hosting-card:hover .hosting-btn-icon {
+    transform: translateX(4px);
+}
+
+/* Hosting Badge */
+.hosting-badge {
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    background: var(--white);
+    color: #9333ea;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    z-index: 10;
+}
+
+/* ==========================================================================
+   Hosting Services Page Styles
+   ========================================================================== */
+.hosting-services-section {
+    padding: 60px 0;
+}
+
+.hosting-services-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.hosting-services-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-gray);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.hosting-service-card {
+    background: var(--white);
+    border: 1px solid var(--color-gray-200);
+    border-radius: var(--radius-2xl);
+    padding: 2rem;
+    text-align: center;
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+}
+
+.hosting-service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--primary-dark));
+    transform: scaleX(0);
+    transition: transform var(--transition-normal);
+}
+
+.hosting-service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--primary-color);
+}
+
+.hosting-service-card:hover::before {
+    transform: scaleX(1);
+}
+
+.hosting-service-icon-wrapper {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    transition: all var(--transition-normal);
+}
+
+.hosting-service-card:hover .hosting-service-icon-wrapper {
+    transform: scale(1.1);
+    box-shadow: 0 10px 20px rgba(220, 38, 38, 0.3);
+}
+
+.hosting-service-icon {
+    color: var(--white);
+    font-size: 2rem;
+}
+
+.hosting-service-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    line-height: 1.3;
+}
+
+.hosting-service-description {
+    color: var(--text-gray);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+}
+
+.hosting-service-link {
+    display: inline-flex;
+    align-items: center;
+    background: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+}
+
+.hosting-service-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), var(--primary-dark));
+    transition: left var(--transition-normal);
+    z-index: -1;
+}
+
+.hosting-service-link:hover {
+    color: var(--white);
+    border-color: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+.hosting-service-link:hover::before {
+    left: 0;
+}
+
+.hosting-service-link svg {
+    transition: transform var(--transition-normal);
+}
+
+.hosting-service-link:hover svg {
+    transform: translateX(4px);
+}
+
+/* ==========================================================================
+   Responsive Design
+   ========================================================================== */
+@media (max-width: 768px) {
+    .hosting-section {
+        padding: 3rem 0;
+    }
+
+    .hosting-section-header h2 {
+        font-size: 1.875rem;
+    }
+
+    .hosting-section-header p {
+        font-size: 1rem;
+    }
+
+    .hosting-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .hosting-card {
+        padding: 1.5rem;
+    }
+
+    .hosting-icon i {
+        font-size: 2rem;
+    }
+
+    .hosting-title {
+        font-size: 1.25rem;
+    }
+
+    /* Hosting Services Page Responsive */
+    .hosting-services-section {
+        padding: 40px 0;
+    }
+
+    .hosting-services-title {
+        font-size: 2rem;
+    }
+
+    .hosting-services-subtitle {
+        font-size: 1rem;
+    }
+
+    .hosting-service-card {
+        padding: 1.5rem;
+    }
+
+    .hosting-service-icon-wrapper {
+        width: 60px;
+        height: 60px;
+    }
+
+    .hosting-service-icon {
+        font-size: 1.5rem;
+    }
+
+    .hosting-service-title {
+        font-size: 1.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hosting-section-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .hosting-card {
+        padding: 1rem;
+    }
+
+    .hosting-icon i {
+        font-size: 1.75rem;
+    }
+
+    /* Hosting Services Page Mobile */
+    .hosting-services-title {
+        font-size: 1.75rem;
+    }
+
+    .hosting-service-card {
+        padding: 1rem;
+    }
+
+    .hosting-service-icon-wrapper {
+        width: 50px;
+        height: 50px;
+    }
+
+    .hosting-service-icon {
+        font-size: 1.25rem;
+    }
+}

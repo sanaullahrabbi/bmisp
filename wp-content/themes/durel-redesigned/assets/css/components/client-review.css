@@ -3,6 +3,7 @@
 .client-review-section {
     position: relative;
     overflow: hidden;
+    background: var(--color-gray-50);
 }
 
 .review-section-header {
@@ -38,6 +39,7 @@
 .reviews-slider .slick-track {
     display: flex;
     align-items: stretch;
+    padding: 2rem 0;
 }
 
 .reviews-slider .slick-slide {
@@ -86,7 +88,7 @@
 
 .review-slide:hover .review-card {
     transform: translateY(-5px);
-    box-shadow: 0 20px 40px -3px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
 .review-content {
@@ -189,81 +191,6 @@
 
 .review-slide:hover .stars i {
     transform: scale(1.05);
-}
-
-/* Slider Navigation */
-.reviews-slick-prev,
-.reviews-slick-next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 10;
-    background: #dc2626;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
-}
-
-.reviews-slick-prev:hover,
-.reviews-slick-next:hover {
-    background: #b91c1c;
-    transform: translateY(-50%) scale(1.1);
-    box-shadow: 0 6px 16px rgba(220, 38, 38, 0.4);
-}
-
-.reviews-slick-prev {
-    left: -25px;
-}
-
-.reviews-slick-next {
-    right: -25px;
-}
-
-.reviews-slick-prev i,
-.reviews-slick-next i {
-    font-size: 1.2rem;
-}
-
-/* Slider Dots */
-.reviews-slider .slick-dots {
-    position: static;
-    margin-top: 2rem;
-    text-align: center;
-}
-
-.reviews-slider .slick-dots li {
-    display: inline-block;
-    margin: 0 5px;
-}
-
-.reviews-slider .slick-dots li button {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    border: none;
-    background: #d1d5db;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 0;
-    padding: 0;
-}
-
-.reviews-slider .slick-dots li.slick-active button {
-    background: #dc2626;
-    transform: scale(1.2);
-}
-
-.reviews-slider .slick-dots li button:hover {
-    background: #dc2626;
-    transform: scale(1.1);
 }
 
 /* Responsive Design */
@@ -475,4 +402,8 @@
 .client-review-section .container {
     position: relative;
     z-index: 1;
+}
+
+.reviews-slider .slick-dots {
+    margin-top: 0;
 }
