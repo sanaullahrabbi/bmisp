@@ -1,18 +1,31 @@
 /* BMISP Redesigned Theme - Main CSS File */
 
-/* Import CSS files in order of dependency */
+/* ==========================================================================
+   CSS IMPORTS - Organized by dependency order
+   ========================================================================== */
+
+/* 1. Foundation */
 @import url('variables.css');
 @import url('base.css');
 @import url('utilities.css');
+
+/* 2. Third-party Libraries */
+@import url('slick.css');
+
+/* 3. Core Components */
 @import url('components/misc.css');
 @import url('components/button.css');
 @import url('components.css');
-@import url('slick.css');
 
+/* 4. Layout Components */
 @import url('components/navbar.css');
+@import url('components/footer.css');
+@import url('components/back-to-top.css');
+
+/* 5. Page Sections */
 @import url('components/hero-banner.css');
-@import url('components/services.css');
 @import url('components/notice-section.css');
+@import url('components/services.css');
 @import url('components/packages.css');
 @import url('components/hosting.css');
 @import url('components/how-it-works.css');
@@ -20,7 +33,10 @@
 @import url('components/company-activity.css');
 @import url('components/client-review.css');
 @import url('components/cta-section.css');
-@import url('components/back-to-top.css');
-@import url('components/footer.css');
 
+/* 6. Page-specific Styles */
+@import url('components/page-header.css');
+@import url('components/detail-pages.css');
+
+/* 7. Responsive Design */
 @import url('responsive.css');

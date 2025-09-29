@@ -5,13 +5,24 @@ get_header();
 $contact_info = durel_get_contact_info();
 ?>
 
-<!-- Page Banner Section Start  -->
-<?php pageBannerSection(pageTitle: get_the_title()) ?>
-<!-- Page Banner Section End  -->
+<!-- Page Header Section Start  -->
+<?php 
+$page_title = get_the_title();
+$page_subtitle = 'Get in touch with us for any inquiries or support';
+
+// Custom breadcrumbs for Contact page
+$breadcrumbs = array(
+    array('title' => 'Home', 'url' => home_url('/')),
+    array('title' => 'Contact Us', 'url' => false)
+);
+
+pageHeaderSection($page_title, $page_subtitle, $breadcrumbs);
+?>
+<!-- Page Header Section End  -->
 
 <!-- Contact Form Start  -->
-<section class="contact-us-section mt-40 mb-40">
-    <div class="container">
+<section class="detail-page-section">
+    <div class="detail-page-container">
         <div class="row row-cols-1 row-cols-lg-2">
             <div class="col">
                 <div class="form-style-one wow fadeInUp">
@@ -36,11 +47,11 @@ $contact_info = durel_get_contact_info();
 <!-- Contact Form End  -->
 
 <!-- Contact Info Start -->
-<section class="contact-info-section pt-40 pb-40">
-    <div class="row">
-        <div class="col-xl-10 m-auto">
-            <div class="row">
-                <?php if (!empty($contact_info['address'])): ?>
+<section class="detail-page-section">
+    <div class="detail-page-container">
+        <div class="row">
+            <div class="col-xl-10 m-auto">
+                <div class="row">
                     <div class="col-md-4">
                         <div class="address-block-one text-center mb-40 wow fadeInUp">
                             <i class="fas fa-map-marker-alt"></i>
@@ -74,6 +85,7 @@ $contact_info = durel_get_contact_info();
                         </div>
                     </div>
                 <?php endif; ?>
+                </div>
             </div>
         </div>
     </div>

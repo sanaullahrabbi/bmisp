@@ -1,3 +1,10 @@
+/* ==========================================================================
+   BMISP REDESIGNED THEME - NAVBAR STYLES
+   ========================================================================== */
+
+/* ==========================================================================
+   Base Navbar Styles
+   ========================================================================== */
 .navbar {
     padding: var(--space-3) 0;
     background: white !important;
@@ -11,11 +18,9 @@
     padding: 0;
 }
 
-.navbar-nav {
-    font-size: var(--text-base);
-
-}
-
+/* ==========================================================================
+   Logo Styles
+   ========================================================================== */
 .navbar .logo-link {
     display: flex;
     align-items: center;
@@ -34,7 +39,14 @@
     line-height: 1;
 }
 
-
+/* ==========================================================================
+   Desktop Navigation Styles
+   ========================================================================== */
+.navbar-nav {
+    font-size: var(--text-base);
+    display: flex;
+    gap: var(--space-5);
+}
 
 .navbar-nav .nav-item .nav-link {
     white-space: nowrap;
@@ -56,8 +68,9 @@
     font-weight: var(--font-semibold);
 }
 
-
-/* DROPDOWN MENU */
+/* ==========================================================================
+   Dropdown Menu Styles
+   ========================================================================== */
 .navbar-nav .nav-item.dropdown .nav-link {
     padding-right: var(--space-6);
     cursor: pointer;
@@ -114,4 +127,97 @@
 
 .navbar-nav .dropdown-menu .nav-item:hover .nav-link {
     background: var(--color-primary-100);
+}
+
+/* ==========================================================================
+   Mobile Menu Styles
+   ========================================================================== */
+nav {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+nav .navbar-nav {
+    align-items: flex-start;
+}
+
+nav .mobile-download-btn {
+    display: none !important;
+}
+
+/* Mobile Menu Show State */
+nav.show {
+    left: 0;
+}
+
+/* ==========================================================================
+   Responsive Design
+   ========================================================================== */
+@media screen and (max-width: 991px) {
+    .navbar-nav {
+        gap: 0;
+    }
+
+    .navbar-nav .nav-item {
+        width: 100%;
+        padding: 0.5rem 0;
+    }
+
+    .navbar-nav .dropdown-menu .nav-item {
+        padding: 0;
+    }
+
+    .desktop-download-btn {
+        display: none !important;
+    }
+
+    nav {
+        position: absolute;
+        background: white;
+        height: 100vh;
+        top: 100%;
+        left: -100%;
+        padding: 1.5rem;
+        justify-content: flex-start;
+        align-items: flex-start;
+        width: 80%;
+        flex-direction: column;
+        transition: all var(--transition-normal);
+    }
+
+    nav .mobile-download-btn {
+        margin-top: 2rem;
+        display: flex !important;
+    }
+
+    .navbar-nav .dropdown-menu {
+        position: relative;
+        display: none;
+        top: 0;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+        visibility: visible;
+        opacity: 1;
+        transform: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .navbar-nav .nav-link {
+        position: relative;
+    }
+
+    .navbar-nav .nav-item.dropdown .dropdown-menu.show {
+        display: block;
+    }
+
+    .navbar-nav .nav-item.dropdown:hover .nav-link::after {
+        transform: none;
+    }
+
+    .navbar-nav .nav-item.dropdown .nav-link.show::after {
+        transform: translateY(-50%) rotate(180deg) !important;
+    }
 }

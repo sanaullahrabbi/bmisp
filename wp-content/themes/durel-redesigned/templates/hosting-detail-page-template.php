@@ -39,8 +39,8 @@ pageHeaderSection($page_title, $page_subtitle, $breadcrumbs);
 <!-- Page Header Section End  -->
 
 <!-- Hosting Packages Section Start -->
-<section class="hosting-packages-detail py-5">
-    <div class="container">
+<section class="detail-page-section packages-detail-section">
+    <div class="detail-page-container">
         <?php if ($current_hosting_service): ?>
 
             <!-- Packages Slick Slider -->
@@ -112,132 +112,28 @@ pageHeaderSection($page_title, $page_subtitle, $breadcrumbs);
             <?php endif; ?>
 
             <!-- Back to Hosting Link -->
-            <div class="row mt-5">
-                <div class="col-12 text-center">
-                    <a href="<?php echo home_url('/hosting/'); ?>" class="back-to-services-btn">
-                        <i class="fas fa-arrow-left me-2"></i>
-                        Back to All Hosting Services
-                    </a>
-                </div>
+            <div class="text-center">
+                <a href="<?php echo home_url('/hosting/'); ?>" class="back-to-services-btn">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to All Hosting Services
+                </a>
             </div>
 
         <?php else: ?>
             <!-- Service Not Found -->
-            <div class="row">
-                <div class="col-12 text-center">
-                    <div class="service-not-found">
-                        <i class="fas fa-exclamation-triangle mb-3"></i>
-                        <h2>Hosting Service Not Found</h2>
-                        <p>The requested hosting service could not be found.</p>
-                        <a href="<?php echo home_url('/hosting/'); ?>" class="btn btn-primary">
-                            View All Hosting Services
-                        </a>
-                    </div>
+            <div class="text-center">
+                <div class="service-not-found">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <h2>Hosting Service Not Found</h2>
+                    <p>The requested hosting service could not be found.</p>
+                    <a href="<?php echo home_url('/hosting/'); ?>" class="primary-btn">
+                        View All Hosting Services
+                    </a>
                 </div>
             </div>
         <?php endif; ?>
     </div>
 </section>
-
-<style>
-/* Hosting Detail Page Styles */
-.hosting-packages-detail {
-    padding: 60px 0;
-}
-
-.back-to-services-btn {
-    color: #e74c3c;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s ease;
-}
-
-.back-to-services-btn:hover {
-    color: #c0392b;
-}
-
-.no-packages-message, .service-not-found {
-    padding: 3rem;
-    background: #f8f9fa;
-    border-radius: 15px;
-    color: #6c757d;
-}
-
-.no-packages-message i, .service-not-found i {
-    font-size: 3rem;
-    color: #e74c3c;
-}
-
-.btn-primary {
-    background: #e74c3c;
-    border-color: #e74c3c;
-    padding: 12px 24px;
-    border-radius: 25px;
-    text-decoration: none;
-    display: inline-block;
-    margin-top: 1rem;
-}
-
-.btn-primary:hover {
-    background: #c0392b;
-    border-color: #c0392b;
-}
-
-.me-2 {
-    margin-right: 0.5rem;
-}
-</style>
-
-<!-- Slick Slider Initialization Script -->
-<script>
-jQuery(document).ready(function() {
-    if (typeof jQuery.fn.slick !== 'undefined') {
-        jQuery('.packages-slick-slider').slick({
-            slidesToShow: 3,
-            slidesToScroll: 1,
-            centerMode: true,
-            centerPadding: '0px',
-            infinite: true,
-            autoplay: true,
-            autoplaySpeed: 4000,
-            speed: 600,
-            arrows: true,
-            prevArrow: '<button type="button" class="slick-prev packages-slick-prev"><i class="fas fa-chevron-left"></i></button>',
-            nextArrow: '<button type="button" class="slick-next packages-slick-next"><i class="fas fa-chevron-right"></i></button>',
-            dots: false,
-            cssEase: 'ease-in-out',
-        });
-        
-        // Function to update button classes based on center position
-        function updateButtonClasses() {
-            jQuery('.package-slide').each(function() {
-                var $slide = jQuery(this);
-                var $button = $slide.find('.package-btn');
-                
-                if ($slide.hasClass('slick-center')) {
-                    $button.removeClass('secondary-btn').addClass('primary-btn');
-                } else {
-                    $button.removeClass('primary-btn').addClass('secondary-btn');
-                }
-            });
-        }
-        jQuery('.packages-slick-slider').on('afterChange', function(event, slick, currentSlide) {
-            updateButtonClasses();
-        });
-    
-        updateButtonClasses();
-    }
-    
-    // Package selection handling
-    const choosePlanBtns = document.querySelectorAll('.choose-plan-btn');
-    choosePlanBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-            const packageName = this.getAttribute('data-package');
-            alert('Selected package: ' + packageName + '. This would typically redirect to a contact or signup form.');
-        });
-    });
-});
-</script>
 
 <?php
 get_footer();

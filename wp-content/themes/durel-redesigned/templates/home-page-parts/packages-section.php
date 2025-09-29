@@ -107,47 +107,6 @@ if (!empty($homepage_packages)):
         </div>
     </section>
 
-    <!-- Slick Slider Initialization Script -->
-    <script>
-    jQuery(document).ready(function() {
-        if (typeof jQuery.fn.slick !== 'undefined') {
-            jQuery('.packages-slick-slider').slick({
-                slidesToShow: 3,
-                slidesToScroll: 1,
-                centerMode: true,
-                centerPadding: '0px',
-                infinite: true,
-                autoplay: true,
-                autoplaySpeed: 4000,
-                speed: 600,
-                arrows: true,
-                prevArrow: '<button type="button" class="slick-prev packages-slick-prev"><i class="fas fa-chevron-left"></i></button>',
-                nextArrow: '<button type="button" class="slick-next packages-slick-next"><i class="fas fa-chevron-right"></i></button>',
-                dots: false,
-                cssEase: 'ease-in-out',
-            });
-            
-            // Function to update button classes based on center position
-            function updateButtonClasses() {
-                jQuery('.package-slide').each(function() {
-                    var $slide = jQuery(this);
-                    var $button = $slide.find('.package-btn');
-                    
-                    if ($slide.hasClass('slick-center')) {
-                        $button.removeClass('secondary-btn').addClass('primary-btn');
-                    } else {
-                        $button.removeClass('primary-btn').addClass('secondary-btn');
-                    }
-                });
-            }
-            jQuery('.packages-slick-slider').on('afterChange', function(event, slick, currentSlide) {
-                updateButtonClasses();
-            });
-        
-            updateButtonClasses();
-        }
-    });
-    </script>
     <?php
 else:
     ?>

@@ -46,6 +46,232 @@
     else sticky.removeClass("fixed");
   });
 
+  // -------------------- Navbar Mobile Menu Toggle
+  document.addEventListener('DOMContentLoaded', () => {
+    const navbarToggler = document.querySelector('.navbar-toggler');
+    const mobileMenu = document.querySelector('#main-menu');
+    
+    if (navbarToggler && mobileMenu) {
+      // Handle mobile menu toggle
+      navbarToggler.addEventListener('click', () => {
+        mobileMenu.classList.toggle('show');
+      });
+      
+      // Handle mobile dropdown toggles
+      document.querySelectorAll('.dropdown').forEach(dropdown => {
+        dropdown.addEventListener('click', (e) => {
+          dropdown.querySelector('.dropdown-menu').classList.toggle('show');
+          dropdown.querySelector('.nav-link').classList.toggle('show');
+        });
+      });
+      
+      // Close mobile menu when clicking outside
+      document.addEventListener('click', function(event) {
+        if (!mobileMenu.contains(event.target) && !navbarToggler.contains(event.target)) {
+          if (mobileMenu.classList.contains('show')) {
+            mobileMenu.classList.remove('show');
+          }
+        }
+      });
+      
+      // Close mobile menu when clicking on regular links
+      const mobileLinks = mobileMenu.querySelectorAll('.nav-link:not(.dropdown-toggle)');
+      mobileLinks.forEach(link => {
+        if (!link.closest('.nav-item.dropdown') || link.closest('.dropdown-menu')) {
+          link.addEventListener('click', function() {
+            if (window.innerWidth < 992) {
+              mobileMenu.classList.remove('show');
+            }
+          });
+        }
+      });
+      
+      // Handle window resize
+      window.addEventListener('resize', function() {
+        if (window.innerWidth >= 992) {
+          mobileMenu.classList.remove('show');
+          // Close all mobile dropdowns
+          mobileMenu.querySelectorAll('.dropdown-menu').forEach(menu => {
+            menu.classList.remove('show');
+          });
+          mobileMenu.querySelectorAll('.nav-link').forEach(link => {
+            link.classList.remove('show');
+          });
+        }
+      });
+    }
+  });
+
+  // -------------------- Slick Slider Initializations
+  $(document).ready(function() {
+    if (typeof $.fn.slick !== 'undefined') {
+      
+      // Packages Slider (Homepage, Service Detail, Hosting Detail)
+      if ($('.packages-slick-slider').length) {
+        $('.packages-slick-slider').slick({
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          centerMode: true,
+          centerPadding: '0px',
+          infinite: true,
+          autoplay: true,
+          autoplaySpeed: 5000,
+          speed: 600,
+          arrows: true,
+          prevArrow: '<button type="button" class="slick-prev packages-slick-prev"><i class="fas fa-chevron-left"></i></button>',
+          nextArrow: '<button type="button" class="slick-next packages-slick-next"><i class="fas fa-chevron-right"></i></button>',
+          dots: false,
+          cssEase: 'ease-in-out',
+          responsive: [
+            {
+              breakpoint: 1024,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 1,
+                arrows: false,
+              }
+            },
+            {
+              breakpoint: 768,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+              }
+            },
+            {
+              breakpoint: 480,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+              }
+            }
+          ]
+        });
+        
+        // Function to update button classes based on center position
+        function updatePackageButtonClasses() {
+          $('.package-slide').each(function() {
+            var $slide = $(this);
+            var $button = $slide.find('.package-btn');
+            
+            if ($slide.hasClass('slick-center')) {
+              $button.removeClass('secondary-btn').addClass('primary-btn');
+            } else {
+              $button.removeClass('primary-btn').addClass('secondary-btn');
+            }
+          });
+        }
+        
+        $('.packages-slick-slider').on('afterChange', function(event, slick, currentSlide) {
+          updatePackageButtonClasses();
+        });
+        
+        updatePackageButtonClasses();
+      }
+
+      // Team Slider (Support Team Page)
+      if ($('.team-slider').length) {
+        $('.team-slider').slick({
+          slidesToShow: 4,
+          slidesToScroll: 1,
+          infinite: true,
+          autoplay: true,
+          autoplaySpeed: 3000,
+          speed: 600,
+          arrows: true,
+          prevArrow: '<button type="button" class="slick-prev team-slick-prev"><i class="fas fa-chevron-left"></i></button>',
+          nextArrow: '<button type="button" class="slick-next team-slick-next"><i class="fas fa-chevron-right"></i></button>',
+          dots: false,
+          cssEase: 'ease-in-out',
+          responsive: [
+            {
+              breakpoint: 1024,
+              settings: {
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                arrows: true,
+                dots: true
+              }
+            },
+            {
+              breakpoint: 768,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 1,
+                arrows: true,
+                dots: true
+              }
+            },
+            {
+              breakpoint: 480,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                arrows: true,
+                dots: true
+              }
+            }
+          ]
+        });
+      }
+
+      // Client Reviews Slider (Homepage)
+      if ($('.reviews-slider').length) {
+        $('.reviews-slider').slick({
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          infinite: true,
+          autoplay: true,
+          autoplaySpeed: 4000,
+          speed: 600,
+          arrows: true,
+          prevArrow: '<button type="button" class="slick-prev reviews-slick-prev"><i class="fas fa-chevron-left"></i></button>',
+          nextArrow: '<button type="button" class="slick-next reviews-slick-next"><i class="fas fa-chevron-right"></i></button>',
+          dots: true,
+          cssEase: 'ease-in-out',
+          responsive: [
+            {
+              breakpoint: 1024,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 1,
+                arrows: true,
+                dots: true
+              }
+            },
+            {
+              breakpoint: 768,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                arrows: true,
+                dots: true
+              }
+            },
+            {
+              breakpoint: 480,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                arrows: false,
+                dots: true
+              }
+            }
+          ]
+        });
+      }
+
+      // Package Selection Handling
+      $('.choose-plan-btn').on('click', function() {
+        const packageName = $(this).attr('data-package');
+        alert('Selected package: ' + packageName + '. This would typically redirect to a contact or signup form.');
+      });
+
+    } else {
+      console.error('Slick Slider is not loaded');
+    }
+  });
+
   // -------------------- Remove Placeholder When Focus Or Click
   $("input,textarea").each(function () {
     $(this).data("holder", $(this).attr("placeholder"));

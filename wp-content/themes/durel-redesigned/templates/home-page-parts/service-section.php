@@ -25,7 +25,7 @@ if (!empty($home_services)):
                 </p>
             </div>
             
-            <div class="d-grid grid-cols-3 gap-8">
+            <div class="services-grid">
                 <?php foreach ($home_services as $service): ?>
                     <?php 
                     // Safely get service data with defaults

@@ -258,13 +258,7 @@ CSF::createSection(
         "title" => "Watch Demo Button Link :",
         "type" => "text",
         "default" => "#",
-        "desc" => "URL for the 'Watch Demo' button (e.g., YouTube video ID, /demo, etc.)"
-      ),
-      array(
-        "id" => "durel_hp_hb_video_id",
-        "title" => "Demo Video ID :",
-        "type" => "text",
-        "desc" => "YouTube or Vimeo video ID for the demo video (optional)"
+        "desc" => "URL for the 'Watch Demo' button (e.g., YouTube URL, Vimeo URL, or any video URL)"
       ),
       array(
         "id" => "durel_hp_hb_feature_title",
@@ -279,13 +273,6 @@ CSF::createSection(
         "type" => "text",
         "default" => "Up to 1 Gbps Download Speed",
         "desc" => "Description text for the feature card"
-      ),
-      array(
-        "id" => "durel_hp_hb_background_image",
-        "title" => "Background Image :",
-        "type" => "media",
-        "url" => false,
-        "desc" => "Hero section background image (optional)"
       ),
       array(
         "id" => "durel_hp_hb_right_content_type",

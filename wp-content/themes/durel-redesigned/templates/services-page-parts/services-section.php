@@ -11,17 +11,9 @@ $packages_per_row = $get_options['durel_sp_packages_per_row'] ?? '3';
 
 <section class="services-section py-5">
     <div class="container">
-        <!-- Section Header -->
-        <div class="row mb-5">
-            <div class="col-12 text-center">
-                <h2 class="services-title"><?php echo esc_html($section_title); ?></h2>
-                <p class="services-subtitle"><?php echo esc_html($section_subtitle); ?></p>
-            </div>
-        </div>
-
         <!-- Services Grid -->
         <?php if ($show_overview): ?>
-        <div class="d-grid grid-cols-3 gap-8">
+        <div class="services-grid">
             <?php if (!empty($services)): ?>
                 <?php foreach ($services as $index => $service): ?>
                     <?php 

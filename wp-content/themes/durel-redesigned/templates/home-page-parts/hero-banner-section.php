@@ -6,8 +6,8 @@ $get_options = get_option('durel_options');
 <section class="hero-banner-section overflow-hidden position-relative">
     <!-- Background gradient overlay -->
     <div class="hero-bg-overlay"></div>
-    <div class="container hero-banner-content position-relative d-grid grid-cols-2 align-items-center gap-4">
-        <div class="banner-content flex-fill">
+    <div class="container hero-banner-content position-relative">
+        <div class="banner-content">
             <h1 class="hero-title hero-title-accent">
                 <?php _e($get_options['durel_hp_hb_title'] ?: 'Ultra-Fast Fiber Internet', 'durel') ?>
             </h1>
@@ -16,33 +16,24 @@ $get_options = get_option('durel_options');
                 <?php _e($get_options['durel_hp_hb_subtitle'] ?: 'Experience lightning-fast internet speeds with our cutting-edge fiber technology. Get connected to the future today.', 'durel') ?>
             </p>
             
-            <div class="hero-buttons d-flex flex-column flex-sm-row gap-3">
+            <div class="hero-buttons">
                 <a href="<?php echo esc_url($get_options['durel_hp_hb_explore_plans_link'] ?: '#pricing'); ?>" class="primary-btn hero-primary-btn">
                     <span><?php _e($get_options['durel_hp_hb_explore_plans_text'] ?: 'Explore Plans', 'durel') ?></span>
-                    <svg class="ms-2" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="hero-btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <line x1="5" y1="12" x2="19" y2="12"></line>
                         <polyline points="12,5 19,12 12,19"></polyline>
                     </svg>
                 </a>
                 
-                <?php if ($get_options['durel_hp_hb_video_id']): ?>
-                    <button class="secondary-btn hero-secondary-btn" data-video-id="<?php echo esc_attr($get_options['durel_hp_hb_video_id']); ?>" onclick="openVideoModal('<?php echo esc_js($get_options['durel_hp_hb_video_id']); ?>')">
-                        <svg class="me-2" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polygon points="5,3 19,12 5,21"></polygon>
-                        </svg>
-                        <span><?php _e($get_options['durel_hp_hb_watch_demo_text'] ?: 'Watch Demo', 'durel') ?></span>
-                    </button>
-                <?php else: ?>
-                    <a href="<?php echo esc_url($get_options['durel_hp_hb_watch_demo_link'] ?: '#'); ?>" class="secondary-btn hero-secondary-btn">
-                        <svg class="me-2" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polygon points="5,3 19,12 5,21"></polygon>
-                        </svg>
-                        <span><?php _e($get_options['durel_hp_hb_watch_demo_text'] ?: 'Watch Demo', 'durel') ?></span>
-                    </a>
-                <?php endif; ?>
+                <button class="secondary-btn hero-secondary-btn" onclick="openVideoModal('<?php echo esc_js($get_options['durel_hp_hb_watch_demo_link'] ?: '#'); ?>')">
+                    <svg class="hero-btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="5,3 19,12 5,21"></polygon>
+                    </svg>
+                    <span><?php _e($get_options['durel_hp_hb_watch_demo_text'] ?: 'Watch Demo', 'durel') ?></span>
+                </button>
             </div>
         </div>
-        <div class="hero-feature-card flex-fill">
+        <div class="hero-feature-card">
             <?php 
             $right_content_type = $get_options['durel_hp_hb_right_content_type'] ?: 'speed_test';
             
@@ -70,8 +61,8 @@ $get_options = get_option('durel_options');
                 <!-- Feature Card -->
                 <div class="feature-card-content">
                     <div class="feature-card-content-inner">
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="feature-icon me-3">
+                        <div class="feature-header">
+                            <div class="feature-icon">
                                 <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <polygon points="13,2 3,14 12,14 11,22 21,10 12,10 13,2"></polygon>
                                 </svg>
@@ -92,7 +83,7 @@ $get_options = get_option('durel_options');
 </section>
 
 <!-- Video Modal for Hero Demo -->
-<div id="heroVideoModal" class="video-modal fixed inset-0 bg-black/80 z-50 hidden flex items-center justify-center p-4">
+<div id="heroVideoModal" class="video-modal">
     <div class="video-modal-content relative max-w-4xl w-full">
         <button id="closeHeroVideoModal" class="absolute -top-12 right-0 text-white hover:text-gray-300 transition-colors">
             <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -107,13 +98,13 @@ $get_options = get_option('durel_options');
 </div>
 
 <script>
-function openVideoModal(videoId) {
+function openVideoModal(videoUrl) {
     const modal = document.getElementById('heroVideoModal');
     const iframe = document.getElementById('heroVideoIframe');
     
-    if (videoId) {
-        iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
-        modal.classList.remove('hidden');
+    if (videoUrl) {
+        iframe.src = videoUrl;
+        modal.style.display = 'flex';
         document.body.style.overflow = 'hidden';
     }
 }
@@ -124,14 +115,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const iframe = document.getElementById('heroVideoIframe');
     
     closeModal.addEventListener('click', function() {
-        modal.classList.add('hidden');
+        modal.style.display = 'none';
         iframe.src = '';
         document.body.style.overflow = 'auto';
     });
     
     modal.addEventListener('click', function(e) {
         if (e.target === modal) {
-            modal.classList.add('hidden');
+            modal.style.display = 'none';
             iframe.src = '';
             document.body.style.overflow = 'auto';
         }

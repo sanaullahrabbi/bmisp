@@ -8,7 +8,6 @@
 
 .review-section-header {
     text-align: center;
-    margin-bottom: 4rem;
 }
 
 .review-section-header h2 {
@@ -224,10 +223,6 @@
 
     .review-section-header p {
         font-size: 1.125rem;
-    }
-
-    .review-section-header {
-        margin-bottom: 3rem;
     }
 
     .reviews-slider-container {

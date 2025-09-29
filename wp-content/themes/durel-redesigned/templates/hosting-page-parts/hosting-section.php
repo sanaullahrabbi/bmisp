@@ -6,35 +6,38 @@ $show_overview = $get_options['durel_h_show_service_overview'] ?? true;
 $packages_per_row = $get_options['durel_h_packages_per_row'] ?? '3';
 ?>
 
-<section class="hosting-services-section py-5">
+<section class="hosting-services-section py-20">
     <div class="container">
         <!-- Hosting Services Grid -->
         <?php if ($show_overview): ?>
-        <div class="d-grid grid-cols-3 gap-8">
+        <div class="hosting-grid">
             <?php if (!empty($hosting_services)): ?>
                 <?php foreach ($hosting_services as $index => $service): ?>
                     <?php 
+                    $is_featured = isset($service['durel_h_service_featured']) && $service['durel_h_service_featured'] == true;
                     $service_slug = $service['durel_h_service_slug'] ?? '';
                     $service_icon = $service['durel_h_service_icon'] ?? 'fas fa-server';
                     $service_name = $service['durel_h_service_name'] ?? 'Service';
                     $service_description = $service['durel_h_service_description'] ?? '';
+                    $final_link = home_url('/hosting/' . $service_slug . '/');
                     ?>
-                    <div class="w-full">
-                        <div class="hosting-service-card">
-                            <div class="hosting-service-icon-wrapper">
-                                <i class="<?php echo esc_attr($service_icon); ?> hosting-service-icon"></i>
-                            </div>
-                            <h3 class="hosting-service-title"><?php echo esc_html($service_name); ?></h3>
-                            <p class="hosting-service-description"><?php echo esc_html($service_description); ?></p>
-                            <a href="<?php echo home_url('/hosting/' . $service_slug . '/'); ?>" 
-                               class="hosting-service-link view-packages-link" 
-                               data-service="<?php echo esc_attr($service_slug); ?>">
-                                View Packages <svg class="ms-2" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                                    <polyline points="12,5 19,12 12,19"></polyline>
-                                </svg>
-                            </a>
+                    <div class="hosting-card <?php echo $is_featured ? 'featured' : ''; ?>">
+                        <?php if ($is_featured): ?>
+                            <div class="hosting-badge">Popular</div>
+                        <?php endif; ?>
+                        
+                        <div class="hosting-icon">
+                            <i class="<?php echo esc_attr($service_icon); ?>"></i>
                         </div>
+                        
+                        <h3 class="hosting-title"><?php echo esc_html($service_name); ?></h3>
+                        
+                        <p class="hosting-description"><?php echo esc_html($service_description); ?></p>
+                        
+                        <a href="<?php echo esc_url($final_link); ?>" class="hosting-btn">
+                            <span><?php _e('Discover', 'durel') ?></span>
+                            <i class="fas fa-arrow-right hosting-btn-icon"></i>
+                        </a>
                     </div>
                 <?php endforeach; ?>
             <?php else: ?>

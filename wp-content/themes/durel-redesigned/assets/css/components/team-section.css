@@ -59,8 +59,8 @@
 .member-image-container {
     position: relative;
     margin: 0 auto 1.5rem;
-    width: 10rem;
-    height: 10rem;
+    width: 12rem;
+    height: 12rem;
     border-radius: 50%;
     overflow: hidden;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
