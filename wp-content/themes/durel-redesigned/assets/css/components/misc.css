@@ -1,5 +1,3 @@
-
-
 /* ===================================
     FLOATING ACTION BUTTONS
     ================================== */
@@ -49,11 +47,11 @@
 }
 
 .floating-btn-connection {
-    background: var(--secondary-color);
+    background: var(--color-secondary);
 }
 
 .floating-btn-connection:hover {
-    background: var(--secondary-dark);
+    background: var(--color-secondary-dark);
 }
 
 .floating-btn-login {

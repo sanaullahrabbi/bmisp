@@ -39,6 +39,23 @@ CSF::createSection(
     "title" => "General Settings",
     "icon" => "fa fa-cog",
     "fields" => array(
+      // Theme Colors
+      array(
+        "type" => "subheading",
+        "content" => "Theme Colors"
+      ),
+      array(
+        "id" => "durel_theme_color_scheme",
+        "title" => "Color Scheme :",
+        "type" => "select",
+        "options" => array(
+          "red" => "Red Theme (Default)",
+          "blue" => "Blue Theme",
+          "green" => "Green Theme"
+        ),
+        "default" => "red",
+        "desc" => "Choose your website's color scheme. Changes will be applied immediately."
+      ),
       // Site Identity
       array(
         "type" => "subheading",
@@ -62,6 +79,20 @@ CSF::createSection(
         "type" => "media",
         "url" => false,
         "desc" => "Main company logo"
+      ),
+      array(
+        "id" => "durel_ss_header_show_company_name",
+        "title" => "Show Company Name in Header :",
+        "type" => "switcher",
+        "default" => true,
+        "desc" => "Display company name next to logo in header"
+      ),
+      array(
+        "id" => "durel_ss_footer_show_company_name",
+        "title" => "Show Company Name in Footer :",
+        "type" => "switcher",
+        "default" => true,
+        "desc" => "Display company name next to logo in footer"
       ),
       
       // Contact Information

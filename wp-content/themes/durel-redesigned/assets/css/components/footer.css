@@ -14,7 +14,7 @@ footer::before {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.6) 100%);
+    background: linear-gradient(135deg, rgba(var(--black-rgb), 0.8) 0%, rgba(var(--black-rgb), 0.6) 100%);
     pointer-events: none;
 }
 
@@ -192,12 +192,12 @@ footer::before {
     justify-content: center;
     width: 2.5rem;
     height: 2.5rem;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(var(--white-rgb), 0.1);
     border-radius: var(--radius-lg);
     color: var(--color-gray-400);
     text-decoration: none;
     transition: all 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(var(--white-rgb), 0.1);
 }
 
 .social-link:hover {
@@ -259,6 +259,6 @@ footer::before {
     }
 
     .footer-modern::before {
-        background: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.7) 100%);
+        background: linear-gradient(135deg, rgba(var(--black-rgb), 0.9) 0%, rgba(var(--black-rgb), 0.7) 100%);
     }
 }

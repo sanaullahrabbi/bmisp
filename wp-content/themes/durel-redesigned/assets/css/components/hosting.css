@@ -64,7 +64,7 @@
 .hosting-card.featured {
     background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
     color: var(--white);
-    border-color: #9333ea;
+    border-color: var(--color-primary-500);
 }
 
 .hosting-card:hover {
@@ -127,11 +127,11 @@
 }
 
 .hosting-card.featured .hosting-description {
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(var(--white-rgb), 0.8);
 }
 
 .hosting-card:not(.featured):hover .hosting-description {
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(var(--white-rgb), 0.9);
 }
 
 /* Hosting Button */
@@ -159,7 +159,7 @@
 }
 
 .hosting-card.featured .hosting-btn:hover {
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(var(--white-rgb), 0.8);
 }
 
 .hosting-card:not(.featured):hover .hosting-btn {
@@ -167,7 +167,7 @@
 }
 
 .hosting-card:not(.featured):hover .hosting-btn:hover {
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(var(--white-rgb), 0.8);
 }
 
 .hosting-btn-icon {
@@ -184,7 +184,7 @@
     top: -12px;
     right: -12px;
     background: var(--white);
-    color: #9333ea;
+    color: var(--color-primary-500);
     padding: 0.25rem 0.75rem;
     border-radius: 9999px;
     font-size: 0.875rem;

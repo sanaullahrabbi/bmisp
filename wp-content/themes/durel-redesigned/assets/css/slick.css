@@ -128,11 +128,11 @@
     transform: translateY(-50%);
     width: 50px;
     height: 50px;
-    background: #dc2626;
+    background: var(--color-primary-600);
     border: none;
     border-radius: 50%;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    color: #ffffff;
+    color: var(--white);
     font-size: 18px;
     cursor: pointer;
     display: flex;
@@ -146,10 +146,10 @@
 .slick-next:hover,
 .slick-prev:focus,
 .slick-next:focus {
-    background: #b91c1c;
-    color: #ffffff;
+    background: var(--color-primary-700);
+    color: var(--white);
     transform: translateY(-50%) scale(1.1);
-    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.3);
+    box-shadow: 0 6px 20px rgba(var(--color-primary-600-rgb), 0.3);
 }
 
 .slick-prev {
@@ -192,7 +192,7 @@
     height: 12px;
     border-radius: 50%;
     border: none;
-    background: #d1d5db;
+    background: var(--color-gray-300);
     cursor: pointer;
     transition: all 0.3s ease;
     font-size: 0;
@@ -200,15 +200,15 @@
 }
 
 .slick-dots li.slick-active button {
-    background: #dc2626;
+    background: var(--color-primary-600);
     transform: scale(1.2);
 }
 
 .slick-dots li button:hover {
-    background: #dc2626;
+    background: var(--color-primary-600);
     transform: scale(1.1);
 }
 
-.slick-dots li button:before{
+.slick-dots li button:before {
     content: "";
 }

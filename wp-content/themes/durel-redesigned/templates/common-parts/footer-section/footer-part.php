@@ -37,15 +37,20 @@ function footer_menu($themeLocation, $menuClass = "", $walker = "")
                 <div class="footer-company-info">
                     <div class="company-logo d-flex align-items-center mb-4">
                         <?php
+                        $get_options = get_option('durel_options');
+                        $show_company_name_footer = $get_options['durel_ss_footer_show_company_name'] ?? true;
+                        
                         if (!empty($contact_info['header_logo']['url'])) {
                             echo '<div class="footer-logo">';
                             echo '<img src="' . esc_url($contact_info['header_logo']['url']) . '" alt="' . esc_attr($contact_info['company_name'] ?: get_bloginfo('name')) . '"  style="max-height: 48px; width: auto;">';
                             echo '</div>';
                         }
                         ?>
+                        <?php if ($show_company_name_footer): ?>
                         <span class="company-name">
                             <?php echo esc_html($contact_info['company_name'] ?: 'BMISP'); ?>
                         </span>
+                        <?php endif; ?>
                     </div>
                     <p class="company-description text-gray-400">
                         <?php echo esc_html($contact_info['description'] ?: 'Your trusted partner for high-speed fiber internet connectivity across Bangladesh.'); ?>

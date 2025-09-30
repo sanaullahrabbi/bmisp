@@ -382,4 +382,90 @@ if (!function_exists('durel_get_video_categories')):
     }
 endif;
 
+// Dynamic Theme Color System
+if (!function_exists('durel_get_theme_colors')):
+    function durel_get_theme_colors() {
+        $options = get_option('durel_options');
+        $color_scheme = $options['durel_theme_color_scheme'] ?? 'red';
+        
+        $themes = array(
+            'red' => array(
+                'primary-50' => '#fef2f2',
+                'primary-100' => '#fee2e2',
+                'primary-200' => '#fecaca',
+                'primary-300' => '#fca5a5',
+                'primary-400' => '#f87171',
+                'primary-500' => '#ef4444',
+                'primary-600' => '#dc2626',
+                'primary-700' => '#b91c1c',
+                'primary-800' => '#991b1b',
+                'primary-900' => '#7f1d1d',
+                'primary-500-rgb' => '239, 68, 68',
+                'primary-600-rgb' => '220, 38, 38',
+                'primary-700-rgb' => '185, 28, 28',
+            ),
+            'blue' => array(
+                'primary-50' => '#eff6ff',
+                'primary-100' => '#dbeafe',
+                'primary-200' => '#bfdbfe',
+                'primary-300' => '#93c5fd',
+                'primary-400' => '#60a5fa',
+                'primary-500' => '#3b82f6',
+                'primary-600' => '#2563eb',
+                'primary-700' => '#1d4ed8',
+                'primary-800' => '#1e40af',
+                'primary-900' => '#1e3a8a',
+                'primary-500-rgb' => '59, 130, 246',
+                'primary-600-rgb' => '37, 99, 235',
+                'primary-700-rgb' => '29, 78, 216',
+            ),
+            'green' => array(
+                'primary-50' => '#f0fdf4',
+                'primary-100' => '#dcfce7',
+                'primary-200' => '#bbf7d0',
+                'primary-300' => '#86efac',
+                'primary-400' => '#4ade80',
+                'primary-500' => '#22c55e',
+                'primary-600' => '#16a34a',
+                'primary-700' => '#15803d',
+                'primary-800' => '#166534',
+                'primary-900' => '#14532d',
+                'primary-500-rgb' => '34, 197, 94',
+                'primary-600-rgb' => '22, 163, 74',
+                'primary-700-rgb' => '21, 128, 61',
+            )
+        );
+        
+        return $themes[$color_scheme] ?? $themes['red'];
+    }
+endif;
+
+// Add dynamic CSS for theme colors
+add_action('wp_head', 'durel_dynamic_theme_css');
+
+if (!function_exists('durel_dynamic_theme_css')):
+    function durel_dynamic_theme_css() {
+        $colors = durel_get_theme_colors();
+        ?>
+        <style id="durel-dynamic-theme-css">
+            :root {
+                --color-primary-50: <?php echo $colors['primary-50']; ?>;
+                --color-primary-100: <?php echo $colors['primary-100']; ?>;
+                --color-primary-200: <?php echo $colors['primary-200']; ?>;
+                --color-primary-300: <?php echo $colors['primary-300']; ?>;
+                --color-primary-400: <?php echo $colors['primary-400']; ?>;
+                --color-primary-500: <?php echo $colors['primary-500']; ?>;
+                --color-primary-600: <?php echo $colors['primary-600']; ?>;
+                --color-primary-700: <?php echo $colors['primary-700']; ?>;
+                --color-primary-800: <?php echo $colors['primary-800']; ?>;
+                --color-primary-900: <?php echo $colors['primary-900']; ?>;
+                --color-primary-500-rgb: <?php echo $colors['primary-500-rgb']; ?>;
+                --color-primary-600-rgb: <?php echo $colors['primary-600-rgb']; ?>;
+                --color-primary-700-rgb: <?php echo $colors['primary-700-rgb']; ?>;
+            }
+        </style>
+        <?php
+    }
+endif;
+
 ?>

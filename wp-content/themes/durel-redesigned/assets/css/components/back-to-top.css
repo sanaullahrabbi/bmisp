@@ -6,7 +6,7 @@
     left: 2rem;
     width: 3rem;
     height: 3rem;
-    background: #dc2626;
+    background: var(--color-primary-600);
     color: white;
     border: none;
     border-radius: 50%;
@@ -14,15 +14,15 @@
     display: none;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+    box-shadow: 0 4px 12px rgba(var(--color-primary-600-rgb), 0.3);
     transition: all 0.3s ease;
     z-index: 1000;
 }
 
 .scroll-top:hover {
-    background: #b91c1c;
+    background: var(--color-primary-700);
     transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
+    box-shadow: 0 6px 20px rgba(var(--color-primary-600-rgb), 0.4);
 }
 
 .scroll-top:active {

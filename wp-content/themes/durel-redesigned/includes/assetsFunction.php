@@ -10,14 +10,10 @@ function durel_redesigned_assets()
     // CSS Files
     $cssFiles = array(
         "durel_bootstrap_min" => ASSETS_PATH . "css/bootstrap.min.css",
-        "durel_viewbox" => ASSETS_PATH . "css/viewbox.css",
-        "durel_mediabox" => ASSETS_PATH . "css/mediabox.css",
         "durel_slick_cdn" => "https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css",
         "durel_slick_theme_cdn" => "https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css",
         "durel_swiper" => "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css",
-        "durel_style_min" => ASSETS_PATH . "css/style.min.css",
         "durel_custom" => ASSETS_PATH . "css/custom.css",
-        "durel_responsive" => ASSETS_PATH . "css/responsive.css",
     );
 
     foreach ($cssFiles as $handleKey => $cssFile):
@@ -40,8 +36,6 @@ function durel_redesigned_assets()
         'durel_nice_select_min' => ASSETS_PATH . 'vendor/nice-select/jquery.nice-select.min.js',
         'durel_validator' => ASSETS_PATH . 'vendor/validator.js',
         'durel_isotope_pkgd_min' => ASSETS_PATH . 'js/isotope.pkgd.min.js',
-        'durel_viewbox_min' => ASSETS_PATH . 'js/jquery.viewbox.min.js',
-        'durel_mediabox_min' => ASSETS_PATH . 'js/mediabox.js',
         'durel_theme_min' => ASSETS_PATH . 'js/theme.js',
     );
 

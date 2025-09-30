@@ -33,13 +33,15 @@
                     <?php
                     // Get global contact info
                     $contact_info = durel_get_contact_info();
+                    $get_options = get_option('durel_options');
+                    $show_company_name_header = $get_options['durel_ss_header_show_company_name'] ?? true;
                     
                     if (!empty($contact_info['header_logo']['url'])) {
                         // Use logo from global settings
                         echo '<a href="' . esc_url(home_url('/')) . '" class="logo-link d-flex align-items-center">';
                         echo '<img src="' . esc_url($contact_info['header_logo']['url']) . '" alt="' . esc_attr($contact_info['company_name'] ?: get_bloginfo('name')) . '" class="logo-image" style="max-height: 48px; width: auto;">';
-                        // Also show company name next to logo
-                        if (!empty($contact_info['company_name'])) {
+                        // Show company name only if option is enabled
+                        if ($show_company_name_header && !empty($contact_info['company_name'])) {
                             echo '<span class="logo-text">' . esc_html($contact_info['company_name']) . '</span>';
                         }
                         echo '</a>';
