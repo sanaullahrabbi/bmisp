@@ -43,6 +43,8 @@
 @import url('components/faq-page.css');
 @import url('components/about-page.css');
 @import url('components/pay-bill-page.css');
+@import url('components/image-gallery-page.css');
+@import url('components/video-gallery-page.css');
 
 /* 7. Responsive Design */
 @import url('responsive.css');

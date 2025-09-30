@@ -1559,3 +1559,259 @@ CSF::createSection(
 /* ==============================
 FAQ's Page Options End
 ================================ */
+
+/* ==============================
+Image Gallery Options Start
+================================ */
+CSF::createSection(
+  $prefix,
+  array(
+    "id" => "image_gallery",
+    "title" => "Image Gallery",
+    "icon" => "far fa-images",
+    "fields" => array(
+      array(
+        "type" => "subheading",
+        "content" => "Page Header Settings"
+      ),
+      array(
+        "id" => "durel_ig_page_title",
+        "title" => "Page Title :",
+        "type" => "text",
+        "default" => "Image Gallery",
+        "desc" => "Main title for the Image Gallery page header"
+      ),
+      array(
+        "id" => "durel_ig_page_subtitle",
+        "title" => "Page Subtitle :",
+        "type" => "text",
+        "default" => "Explore our collection of images showcasing our work and achievements",
+        "desc" => "Subtitle text displayed below the main title"
+      ),
+      array(
+        "type" => "subheading",
+        "content" => "Image Categories"
+      ),
+      array(
+        "id" => "durel_image_categories",
+        "title" => "Create Categories :",
+        "type" => "group",
+        "desc" => "Create categories for organizing your images",
+        "fields" => array(
+          array(
+            "id" => "durel_image_category_name",
+            "title" => "Category Name :",
+            "type" => "text",
+            "desc" => "Enter category name (e.g., Events, Services, Team)"
+          ),
+        ),
+      ),
+      array(
+        "type" => "subheading",
+        "content" => "Gallery Images"
+      ),
+      array(
+        "id" => "durel_image_gallery_group",
+        "title" => "Add Images :",
+        "type" => "group",
+        "desc" => "Add images to your gallery with categories for filtering",
+        "fields" => array(
+          array(
+            "id" => "durel_image_title",
+            "title" => "Image Title :",
+            "type" => "text",
+            "desc" => "Title/name for this image"
+          ),
+          array(
+            "id" => "durel_image_description",
+            "title" => "Image Description :",
+            "type" => "textarea",
+            "desc" => "Optional description for this image"
+          ),
+          array(
+            "id" => "durel_image_file",
+            "title" => "Image File :",
+            "type" => "media",
+            "url" => false,
+            "desc" => "Upload or select an image file"
+          ),
+          array(
+            "id" => "durel_image_category",
+            "title" => "Categories :",
+            "type" => "select",
+            "options" => "durel_get_image_categories",
+            "multiple" => true,
+            "desc" => "Select one or more categories for this image"
+          ),
+        ),
+      ),
+    )
+  )
+);
+/* ==============================
+Image Gallery Options End
+================================ */
+
+/* ==============================
+Video Gallery Options Start
+================================ */
+CSF::createSection(
+  $prefix,
+  array(
+    "id" => "video_gallery",
+    "title" => "Video Gallery",
+    "icon" => "far fa-play-circle",
+    "fields" => array(
+      array(
+        "type" => "subheading",
+        "content" => "Page Header Settings"
+      ),
+      array(
+        "id" => "durel_vg_page_title",
+        "title" => "Page Title :",
+        "type" => "text",
+        "default" => "Video Gallery",
+        "desc" => "Main title for the Video Gallery page header"
+      ),
+      array(
+        "id" => "durel_vg_page_subtitle",
+        "title" => "Page Subtitle :",
+        "type" => "text",
+        "default" => "Watch our collection of videos showcasing our services and achievements",
+        "desc" => "Subtitle text displayed below the main title"
+      ),
+      array(
+        "type" => "subheading",
+        "content" => "Video Categories"
+      ),
+      array(
+        "id" => "durel_video_categories",
+        "title" => "Create Categories :",
+        "type" => "group",
+        "desc" => "Create categories for organizing your videos",
+        "fields" => array(
+          array(
+            "id" => "durel_video_category_name",
+            "title" => "Category Name :",
+            "type" => "text",
+            "desc" => "Enter category name (e.g., Tutorials, Promotions, Events)"
+          ),
+        ),
+      ),
+      array(
+        "type" => "subheading",
+        "content" => "Gallery Videos"
+      ),
+      array(
+        "id" => "durel_video_gallery_group",
+        "title" => "Add Videos :",
+        "type" => "group",
+        "desc" => "Add videos to your gallery with categories for filtering",
+        "fields" => array(
+          array(
+            "id" => "durel_video_title",
+            "title" => "Video Title :",
+            "type" => "text",
+            "desc" => "Title/name for this video"
+          ),
+          array(
+            "id" => "durel_video_description",
+            "title" => "Video Description :",
+            "type" => "textarea",
+            "desc" => "Optional description for this video"
+          ),
+          array(
+            "id" => "durel_video_url",
+            "title" => "Video URL :",
+            "type" => "text",
+            "desc" => "Video URL (YouTube, Vimeo, MP4, or any video link)"
+          ),
+          array(
+            "id" => "durel_video_thumbnail",
+            "title" => "Video Thumbnail :",
+            "type" => "media",
+            "url" => false,
+            "desc" => "Custom thumbnail image (optional)"
+          ),
+          array(
+            "id" => "durel_video_category",
+            "title" => "Categories :",
+            "type" => "select",
+            "options" => "durel_get_video_categories",
+            "multiple" => true,
+            "desc" => "Select one or more categories for this video"
+          ),
+        ),
+      ),
+    )
+  )
+);
+/* ==============================
+Video Gallery Options End
+================================ */
+
+// Add JavaScript for live category refresh
+add_action('admin_footer', 'durel_gallery_live_refresh_script');
+
+if (!function_exists('durel_gallery_live_refresh_script')):
+    function durel_gallery_live_refresh_script() {
+        $screen = get_current_screen();
+        if ($screen && strpos($screen->id, 'durel-options') !== false) {
+            ?>
+            <script type="text/javascript">
+            jQuery(document).ready(function($) {
+                // Function to refresh category dropdowns
+                function refreshCategoryDropdowns() {
+                    // Refresh image category dropdowns
+                    $('select[data-depend-id*="durel_image_category"]').each(function() {
+                        var $select = $(this);
+                        var currentValue = $select.val();
+                        
+                        // Trigger change event to refresh options
+                        $select.trigger('change');
+                        
+                        // Restore selected value if it still exists
+                        if (currentValue && $select.find('option[value="' + currentValue + '"]').length > 0) {
+                            $select.val(currentValue);
+                        }
+                    });
+                    
+                    // Refresh video category dropdowns
+                    $('select[data-depend-id*="durel_video_category"]').each(function() {
+                        var $select = $(this);
+                        var currentValue = $select.val();
+                        
+                        // Trigger change event to refresh options
+                        $select.trigger('change');
+                        
+                        // Restore selected value if it still exists
+                        if (currentValue && $select.find('option[value="' + currentValue + '"]').length > 0) {
+                            $select.val(currentValue);
+                        }
+                    });
+                }
+                
+                // Watch for changes in category creation fields
+                $(document).on('change', 'input[name*="durel_image_category_name"], input[name*="durel_video_category_name"]', function() {
+                    setTimeout(function() {
+                        refreshCategoryDropdowns();
+                    }, 500); // Small delay to allow form to update
+                });
+                
+                // Watch for form submissions
+                $(document).on('submit', 'form', function() {
+                    setTimeout(function() {
+                        refreshCategoryDropdowns();
+                    }, 1000); // Delay after form submission
+                });
+                
+                // Initial refresh on page load
+                setTimeout(function() {
+                    refreshCategoryDropdowns();
+                }, 1000);
+            });
+            </script>
+            <?php
+        }
+    }
+endif;

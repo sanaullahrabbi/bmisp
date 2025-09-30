@@ -344,4 +344,42 @@ if (!function_exists('durel_get_internet_packages')):
     }
 endif;
 
+// Helper function to get image categories for select options
+if (!function_exists('durel_get_image_categories')):
+    function durel_get_image_categories() {
+        $options = get_option('durel_options');
+        $categories = $options['durel_image_categories'] ?? [];
+        $category_options = array('' => 'Select Category');
+        
+        if (!empty($categories)) {
+            foreach ($categories as $category) {
+                if (!empty($category['durel_image_category_name'])) {
+                    $category_options[$category['durel_image_category_name']] = $category['durel_image_category_name'];
+                }
+            }
+        }
+        
+        return $category_options;
+    }
+endif;
+
+// Helper function to get video categories for select options
+if (!function_exists('durel_get_video_categories')):
+    function durel_get_video_categories() {
+        $options = get_option('durel_options');
+        $categories = $options['durel_video_categories'] ?? [];
+        $category_options = array('' => 'Select Category');
+        
+        if (!empty($categories)) {
+            foreach ($categories as $category) {
+                if (!empty($category['durel_video_category_name'])) {
+                    $category_options[$category['durel_video_category_name']] = $category['durel_video_category_name'];
+                }
+            }
+        }
+        
+        return $category_options;
+    }
+endif;
+
 ?>

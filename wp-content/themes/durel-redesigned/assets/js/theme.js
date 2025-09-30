@@ -46,6 +46,80 @@
     else sticky.removeClass("fixed");
   });
 
+          // -------------------- Video Gallery Modal Functionality
+          $(document).ready(function() {
+            // Video modal functionality
+            $('.video-link').on('click', function(e) {
+              e.preventDefault();
+              
+              var videoUrl = $(this).data('video-url');
+              
+              if (!videoUrl) return;
+              
+              // Set video source
+              $('#videoPlayer').attr('src', videoUrl);
+              
+              // Show modal
+              $('#videoModal').css('display', 'flex');
+              $('body').css('overflow', 'hidden');
+            });
+            
+            // Close modal
+            $('#closeVideoModal').on('click', function() {
+              $('#videoModal').css('display', 'none');
+              $('#videoPlayer').attr('src', '');
+              $('body').css('overflow', 'auto');
+            });
+            
+            // Close modal when clicking outside
+            $('#videoModal').on('click', function(e) {
+              if (e.target === this) {
+                $('#videoModal').css('display', 'none');
+                $('#videoPlayer').attr('src', '');
+                $('body').css('overflow', 'auto');
+              }
+            });
+          });
+
+  // -------------------- Gallery Filter Functionality
+  $(document).ready(function() {
+    // Image Gallery Filter
+    $('.gallery-filters .filter-btn').on('click', function() {
+      var filterValue = $(this).attr('data-filter');
+      
+      // Remove active class from all buttons
+      $('.gallery-filters .filter-btn').removeClass('active');
+      // Add active class to clicked button
+      $(this).addClass('active');
+      
+      // Filter gallery items
+      if (filterValue === '*') {
+        $('.gallery-item').fadeIn(300);
+      } else {
+        $('.gallery-item').hide();
+        $('.gallery-item' + filterValue).fadeIn(300);
+      }
+    });
+    
+    // Video Gallery Filter (if exists)
+    $('.video-gallery-section .gallery-filters .filter-btn').on('click', function() {
+      var filterValue = $(this).attr('data-filter');
+      
+      // Remove active class from all buttons
+      $('.video-gallery-section .gallery-filters .filter-btn').removeClass('active');
+      // Add active class to clicked button
+      $(this).addClass('active');
+      
+      // Filter video items
+      if (filterValue === '*') {
+        $('.video-item').fadeIn(300);
+      } else {
+        $('.video-item').hide();
+        $('.video-item' + filterValue).fadeIn(300);
+      }
+    });
+  });
+
   // -------------------- Pay Bill Page Tab Functionality
   document.addEventListener('DOMContentLoaded', () => {
     const tabButtons = document.querySelectorAll('.pay-bill-tab-btn');
