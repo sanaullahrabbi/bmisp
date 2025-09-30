@@ -113,6 +113,7 @@
     transition: all var(--transition-normal);
     font-size: var(--text-sm);
     z-index: 1000;
+    min-width: 12rem;
 }
 
 .navbar-nav .nav-item.dropdown:hover .dropdown-menu {

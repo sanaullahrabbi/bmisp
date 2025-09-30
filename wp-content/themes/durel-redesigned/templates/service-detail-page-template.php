@@ -104,19 +104,6 @@ pageHeaderSection($page_title, $page_subtitle, $breadcrumbs);
                         <?php endforeach; ?>
                     </div>
                 </div>
-            <?php else: ?>
-                <div class="row">
-                    <div class="col-12 text-center">
-                        <div class="no-packages-message">
-                            <i class="fas fa-box-open mb-3"></i>
-                            <h3>No Packages Available</h3>
-                            <p>No packages have been configured for this service yet.</p>
-                            <a href="<?php echo home_url('/services/'); ?>" class="btn btn-primary">
-                                View All Services
-                            </a>
-                        </div>
-                    </div>
-                </div>
             <?php endif; ?>
 
             <!-- Back to Services Link -->

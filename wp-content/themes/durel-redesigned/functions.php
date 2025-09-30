@@ -6,6 +6,7 @@ require_once get_template_directory() . '/includes/codestar-framework-master/cod
 require_once get_template_directory() . '/includes/codestar-framework-master/samples/admin-options.php';
 require_once get_template_directory() . '/includes/class-walker-nav-main-menu.php';
 require_once get_template_directory() . '/includes/class-walker-nav-mobile-menu.php';
+require_once get_template_directory() . '/includes/menu-generator.php';
 require_once get_template_directory() . '/includes/page-header-component.php';
 
 

@@ -46,6 +46,29 @@
     else sticky.removeClass("fixed");
   });
 
+  // -------------------- Pay Bill Page Tab Functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const tabButtons = document.querySelectorAll('.pay-bill-tab-btn');
+    const tabContents = document.querySelectorAll('.pay-bill-tab-content');
+
+    tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const targetTab = button.getAttribute('data-tab');
+        
+        // Remove active class from all buttons and contents
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        tabContents.forEach(content => content.classList.remove('active'));
+        
+        // Add active class to clicked button and corresponding content
+        button.classList.add('active');
+        const targetContent = document.getElementById(targetTab);
+        if (targetContent) {
+          targetContent.classList.add('active');
+        }
+      });
+    });
+  });
+
   // -------------------- Navbar Mobile Menu Toggle
   document.addEventListener('DOMContentLoaded', () => {
     const navbarToggler = document.querySelector('.navbar-toggler');
@@ -919,4 +942,25 @@ $(".count").each(function () {
         },
       }
     );
+});
+
+// -------------------- Pay Bill Page Tab Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    // Pay Bill page tab functionality
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabPanels = document.querySelectorAll('.tab-panel');
+
+    tabButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const targetTab = this.getAttribute('data-tab');
+
+            // Remove active class from all buttons and panels
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            tabPanels.forEach(panel => panel.classList.remove('active'));
+
+            // Add active class to clicked button and corresponding panel
+            this.classList.add('active');
+            document.getElementById(targetTab).classList.add('active');
+        });
+    });
 });

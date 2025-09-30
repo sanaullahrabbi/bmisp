@@ -740,111 +740,108 @@ CSF::createSection(
   array(
     "id" => "about_page",
     "title" => "About Us Page",
-    'icon' => 'fas fa-home'
-  )
-);
-/* Page Header Section Start  */
-CSF::createSection(
-  $prefix,
-  array(
-    "parent" => "about_page",
-    "title" => "Page Header Section",
-    "icon" => "fas fa-heading",
+    "icon" => "fas fa-info-circle",
     "fields" => array(
+      // Page Header Settings
+      array(
+        "type" => "subheading",
+        "content" => "Page Header Settings"
+      ),
       array(
         "id" => "durel_ap_page_title",
         "title" => "Page Title :",
         "type" => "text",
+        "default" => "About Us",
         "desc" => "Custom page title for the About Us page header"
       ),
       array(
         "id" => "durel_ap_page_subtitle",
         "title" => "Page Subtitle :",
         "type" => "text",
+        "default" => "Learn more about our company, mission, and the people behind our success",
         "desc" => "Subtitle text displayed below the main title"
       ),
-    )
-  )
-);
-/* Page Header Section End  */
-/* Mission & Vision Section Start  */
-CSF::createSection(
-  $prefix,
-  array(
-    "parent" => "about_page",
-    "title" => "Mission & Vision Section",
-    "icon" => "fas fa-plus-circle",
-    "fields" => array(
+      
+      // Mission & Vision Settings
+      array(
+        "type" => "subheading",
+        "content" => "Mission & Vision"
+      ),
       array(
         "id" => "durel_ap_mv_mission_title",
         "title" => "Mission Title :",
-        "type" => "text"
+        "type" => "text",
+        "default" => "Our Mission",
+        "desc" => "Title for the mission section"
       ),
       array(
         "id" => "durel_ap_mv_mission_description",
         "title" => "Mission Description :",
-        "type" => "wp_editor"
+        "type" => "wp_editor",
+        "desc" => "Detailed description of your company's mission"
       ),
       array(
         "id" => "durel_ap_mv_vision_title",
         "title" => "Vision Title :",
-        "type" => "text"
+        "type" => "text",
+        "default" => "Our Vision",
+        "desc" => "Title for the vision section"
       ),
       array(
         "id" => "durel_ap_mv_vision_description",
         "title" => "Vision Description :",
-        "type" => "wp_editor"
+        "type" => "wp_editor",
+        "desc" => "Detailed description of your company's vision"
       ),
-    )
-  )
-);
-/* Mission & Vision Section End  */
-/* History Section Start  */
-CSF::createSection(
-  $prefix,
-  array(
-    "parent" => "about_page",
-    "title" => "Histroy Section",
-    "icon" => "fas fa-plus-circle",
-    "fields" => array(
+      
+      // Company History Settings
+      array(
+        "type" => "subheading",
+        "content" => "Company History"
+      ),
       array(
         "id" => 'durel_ap_history_section_title',
-        "title" => "Section Title :",
+        "title" => "History Section Title :",
         "type" => "text",
+        "default" => "Our Journey",
+        "desc" => "Title for the company history section"
       ),
       array(
         "id" => "durel_ap_history_group",
         "title" => "Add Business History :",
         "type" => "group",
+        "desc" => "Add key milestones in your company's history",
         "fields" => array(
           array(
             "id" => "durel_ap_history_year",
-            "title" => "History Year :",
+            "title" => "Year :",
             "type" => "text",
+            "desc" => "Year of the milestone (e.g., 2020, 2015)"
           ),
           array(
             "id" => "durel_ap_history_title",
-            "title" => "History Title :",
+            "title" => "Milestone Title :",
             "type" => "text",
+            "desc" => "Title of the milestone (e.g., Company Founded, New Office Opened)"
           ),
           array(
             "id" => "durel_ap_history_description",
-            "title" => "Short Description :",
+            "title" => "Description :",
             "type" => "textarea",
+            "desc" => "Brief description of what happened in this milestone"
           ),
           array(
             "id" => "durel_ap_history_img",
-            "title" => "Image (size: 585x370px) :",
+            "title" => "Image :",
             "type" => "media",
-            "url" => false
+            "url" => false,
+            "desc" => "Image related to this milestone (optional)"
           ),
-
         )
       ),
-    ),
+    )
   )
 );
-/* History Section End  */
 
 /* ==============================
 About Page Options End
@@ -998,6 +995,11 @@ CSF::createSection(
         "default" => "/services/",
         "desc" => "URL of the services page (used for linking from home page service section)"
       ),
+      array(
+        "type" => "notice",
+        "style" => "info",
+        "content" => "<strong>🎯 Dynamic Menu Generator</strong><br><br>Click the button below to automatically generate menu items for all your services. This will add them to your main navigation menu.<br><br><button type='button' id='generate-services-menu' class='button button-primary'>Generate Services Menu Items</button><br><br><small>This will create menu items for all your service categories that you can then organize in Appearance → Menus</small>"
+      ),
     ),
   )
 );
@@ -1145,6 +1147,11 @@ CSF::createSection(
         "default" => "/hosting/",
         "desc" => "URL of the hosting page (used for linking from home page)"
       ),
+      array(
+        "type" => "notice",
+        "style" => "info",
+        "content" => "<strong>🎯 Dynamic Menu Generator</strong><br><br>Click the button below to automatically generate menu items for all your hosting services. This will add them to your main navigation menu.<br><br><button type='button' id='generate-hosting-menu' class='button button-primary'>Generate Hosting Menu Items</button><br><br><small>This will create menu items for all your hosting categories that you can then organize in Appearance → Menus</small>"
+      ),
     ),
   )
 );
@@ -1160,70 +1167,234 @@ CSF::createSection(
     "title" => "Pay Bill Page",
     "icon" => "far fa-money-bill-alt",
     "fields" => array(
+      // Page Header Settings
+      array(
+        "type" => "subheading",
+        "content" => "Page Header Settings"
+      ),
+      array(
+        "id" => "durel_pbp_page_title",
+        "title" => "Page Title :",
+        "type" => "text",
+        "default" => "Pay Bill",
+        "desc" => "Custom page title for the Pay Bill page header"
+      ),
+      array(
+        "id" => "durel_pbp_page_subtitle",
+        "title" => "Page Subtitle :",
+        "type" => "text",
+        "default" => "Convenient payment options for your internet bills",
+        "desc" => "Subtitle text displayed below the main title"
+      ),
+      
+      // Page Description
+      array(
+        "type" => "subheading",
+        "content" => "Page Description"
+      ),
+      array(
+        "id" => "durel_pbp_page_description",
+        "title" => "Page Description :",
+        "type" => "wp_editor",
+        "desc" => "Rich text description for the Pay Bill page (supports HTML formatting, lists, etc.)"
+      ),
+      
+      // App & Login Options
+      array(
+        "type" => "subheading",
+        "content" => "App & Login Options"
+      ),
+      array(
+        "id" => "durel_pbp_show_app_section",
+        "title" => "Show App Download Section :",
+        "type" => "switcher",
+        "default" => true,
+        "desc" => "Display app download and login section"
+      ),
+      array(
+        "id" => "durel_pbp_app_download_text",
+        "title" => "App Download Button Text :",
+        "type" => "text",
+        "default" => "Android App Download now",
+        "desc" => "Text for the app download button"
+      ),
+      array(
+        "id" => "durel_pbp_app_download_url",
+        "title" => "App Download URL :",
+        "type" => "text",
+        "default" => "#",
+        "desc" => "URL for app download"
+      ),
+      array(
+        "id" => "durel_pbp_client_login_text",
+        "title" => "Client Login Button Text :",
+        "type" => "text",
+        "default" => "Client Login",
+        "desc" => "Text for the client login button"
+      ),
+      array(
+        "id" => "durel_pbp_client_login_url",
+        "title" => "Client Login URL :",
+        "type" => "text",
+        "default" => "#",
+        "desc" => "URL for client login"
+      ),
+      
+      // Tab Configuration
+      array(
+        "type" => "subheading",
+        "content" => "Tab Configuration"
+      ),
+      array(
+        "id" => "durel_pbp_tab_mobile_banking",
+        "title" => "Mobile Banking Tab Title :",
+        "type" => "text",
+        "default" => "Mobile Banking",
+        "desc" => "Title for the Mobile Banking tab"
+      ),
+      array(
+        "id" => "durel_pbp_tab_checkout",
+        "title" => "Check Out Tab Title :",
+        "type" => "text",
+        "default" => "Check Out & Bill Offers",
+        "desc" => "Title for the Check Out tab"
+      ),
+      array(
+        "id" => "durel_pbp_tab_client_guidelines",
+        "title" => "Client Guidelines Tab Title :",
+        "type" => "text",
+        "default" => "Client's Guidelines",
+        "desc" => "Title for the Client Guidelines tab"
+      ),
+      
+      // Pay Bill Methods
+      array(
+        "type" => "subheading",
+        "content" => "Pay Bill Methods (Mobile Banking Tab)"
+      ),
       array(
         "id" => "durel_pbp_pay_bill_group",
-        "title" => "Add Pay Bill System :",
+        "title" => "Add Payment Methods :",
         "type" => "group",
+        "desc" => "Add different payment methods for bill payment",
         "fields" => array(
           array(
             "id" => "durel_pbp_pay_bill_method",
-            "title" => "Payment Method :",
+            "title" => "Payment Method Name :",
             "type" => "text",
+            "desc" => "Name of the payment method (e.g., bKash, Rocket, Nagad)"
+          ),
+          array(
+            "id" => "durel_pbp_pay_bill_merchant_number",
+            "title" => "Merchant/Recipient Number :",
+            "type" => "text",
+            "desc" => "Merchant number or recipient number for this payment method"
+          ),
+          array(
+            "id" => "durel_pbp_pay_bill_steps",
+            "title" => "Payment Steps :",
+            "type" => "group",
+            "desc" => "Add step-by-step instructions for this payment method",
+            "fields" => array(
+              array(
+                "id" => "durel_pbp_step_number",
+                "title" => "Step Number :",
+                "type" => "text",
+                "desc" => "Step number (e.g., 1, 2, 3)"
+              ),
+              array(
+                "id" => "durel_pbp_step_description",
+                "title" => "Step Description :",
+                "type" => "textarea",
+                "desc" => "Detailed description of this step"
+              ),
+            ),
           ),
           array(
             "id" => "durel_pbp_pay_bill_img",
-            "title" => "Image (size: 630x470px) :",
+            "title" => "Payment Guide Image :",
             "type" => "media",
-            "url" => false
+            "url" => false,
+            "desc" => "Step-by-step guide image for this payment method"
           ),
         ),
       ),
 
+      // Check Out & Bill Offers Tab
+      array(
+        "type" => "subheading",
+        "content" => "Check Out & Bill Offers Tab"
+      ),
+      array(
+        "id" => "durel_pbp_checkout_description",
+        "title" => "Check Out Tab Description :",
+        "type" => "wp_editor",
+        "desc" => "Rich text description for the Check Out tab"
+      ),
       array(
         "id" => "durel_pbp_check_out_group",
-        "title" => "Add Check Out System :",
+        "title" => "Add Check Out Information :",
         "type" => "group",
+        "desc" => "Add check out process images and information",
         "fields" => array(
           array(
             "id" => "durel_pbp_cu_method",
-            "title" => "Payment Method :",
+            "title" => "Check Out Method :",
             "type" => "text",
+            "desc" => "Name of the check out method"
           ),
           array(
             "id" => "durel_pbp_cu_app_img",
-            "title" => "App Payment Image (size: 900x500px) :",
+            "title" => "App Payment Image :",
             "type" => "media",
-            "url" => false
+            "url" => false,
+            "desc" => "Image showing app-based payment process"
           ),
           array(
             "id" => "durel_pbp_cu_manual_img",
-            "title" => "Manual Payment Image (size: 900x500px) :",
+            "title" => "Manual Payment Image :",
             "type" => "media",
-            "url" => false
+            "url" => false,
+            "desc" => "Image showing manual payment process"
           ),
         ),
       ),
+
+      // Client Guidelines Tab
       array(
-        "id" => "durel_pbp_payment_group",
-        "title" => "Add Payment System :",
+        "type" => "subheading",
+        "content" => "Client Guidelines Tab"
+      ),
+      array(
+        "id" => "durel_pbp_client_guidelines_description",
+        "title" => "Client Guidelines Description :",
+        "type" => "wp_editor",
+        "desc" => "Rich text description for the Client Guidelines tab"
+      ),
+      array(
+        "id" => "durel_pbp_client_guidelines_group",
+        "title" => "Add Client Guidelines :",
         "type" => "group",
+        "desc" => "Add client guidelines and instructions",
         "fields" => array(
           array(
-            "id" => "durel_pbp_payment_method",
-            "title" => "Payment Method :",
+            "id" => "durel_pbp_guideline_title",
+            "title" => "Guideline Title :",
             "type" => "text",
+            "desc" => "Title of the guideline"
           ),
           array(
-            "id" => "durel_pbp_payment_app_img",
-            "title" => "App Payment Image (size: 900x500px) :",
-            "type" => "media",
-            "url" => false
+            "id" => "durel_pbp_guideline_description",
+            "title" => "Guideline Description :",
+            "type" => "wp_editor",
+            "desc" => "Detailed description of the guideline"
           ),
           array(
-            "id" => "durel_pbp_payment_manual_img",
-            "title" => "Manual Payment Image (size: 900x500px) :",
+            "id" => "durel_pbp_guideline_image",
+            "title" => "Guideline Image :",
             "type" => "media",
-            "url" => false
+            "url" => false,
+            "desc" => "Image related to this guideline (optional)"
           ),
         ),
       ),
@@ -1342,6 +1513,28 @@ CSF::createSection(
     "title" => "FAQ's Page",
     "icon" => "far fa-question-circle",
     "fields" => array(
+      array(
+        "type" => "subheading",
+        "content" => "Page Header Settings"
+      ),
+      array(
+        "id" => "durel_faq_page_title",
+        "title" => "Page Title :",
+        "type" => "text",
+        "default" => "Frequently Asked Questions",
+        "desc" => "Main title for the FAQ page header"
+      ),
+      array(
+        "id" => "durel_faq_page_subtitle",
+        "title" => "Page Subtitle :",
+        "type" => "text",
+        "default" => "Find answers to commonly asked questions",
+        "desc" => "Subtitle text displayed below the main title"
+      ),
+      array(
+        "type" => "subheading",
+        "content" => "FAQ Content"
+      ),
       array(
         "id" => "durel_faq_groups",
         "title" => "Add FAQ's :",

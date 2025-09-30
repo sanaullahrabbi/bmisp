@@ -18,23 +18,23 @@ if ($howItWorkGroup):
                 $stepNumber = 1;
                 foreach ($howItWorkGroup as $howItWork): ?>
                     <div class="how-it-works-step">
-                        <div class="step-content">
-                            <div class="step-number">
-                                <div class="step-circle">
-                                    <span class="step-number-text"><?php echo $stepNumber; ?></span>
+                        <div class="how-it-works-step-content">
+                            <div class="how-it-works-step-number">
+                                <div class="how-it-works-step-circle">
+                                    <span class="how-it-works-step-number-text"><?php echo $stepNumber; ?></span>
                                 </div>
                                 <?php if ($stepNumber < count($howItWorkGroup)): ?>
-                                    <div class="step-connector"></div>
+                                    <div class="how-it-works-step-connector"></div>
                                 <?php endif; ?>
                             </div>
                             
-                            <div class="step-info">
+                            <div class="how-it-works-step-info">
                                 <?php if ($howItWork['durel_hp_hiw_name']): ?>
-                                    <h3 class="step-title"><?php _e($howItWork['durel_hp_hiw_name'], 'durel') ?></h3>
+                                    <h3 class="how-it-works-step-title"><?php _e($howItWork['durel_hp_hiw_name'], 'durel') ?></h3>
                                 <?php endif; ?>
                                 
                                 <?php if ($howItWork['durel_hp_hiw_short_description']): ?>
-                                    <p class="step-description"><?php _e($howItWork['durel_hp_hiw_short_description'], 'durel') ?></p>
+                                    <p class="how-it-works-step-description"><?php _e($howItWork['durel_hp_hiw_short_description'], 'durel') ?></p>
                                 <?php endif; ?>
                             </div>
                         </div>

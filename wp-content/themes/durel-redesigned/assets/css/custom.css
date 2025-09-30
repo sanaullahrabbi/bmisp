@@ -15,6 +15,7 @@
 /* 3. Core Components */
 @import url('components/misc.css');
 @import url('components/button.css');
+@import url('components/contact-form-7.css');
 @import url('components.css');
 
 /* 4. Layout Components */
@@ -33,10 +34,15 @@
 @import url('components/company-activity.css');
 @import url('components/client-review.css');
 @import url('components/cta-section.css');
-
+@import url('components/page-content.css');
 /* 6. Page-specific Styles */
 @import url('components/page-header.css');
+
 @import url('components/detail-pages.css');
+@import url('components/contact-page.css');
+@import url('components/faq-page.css');
+@import url('components/about-page.css');
+@import url('components/pay-bill-page.css');
 
 /* 7. Responsive Design */
 @import url('responsive.css');

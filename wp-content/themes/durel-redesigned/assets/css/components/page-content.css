@@ -1,0 +1,242 @@
+/* ==============================
+Page Content Section Styles
+=============================== */
+
+.page-content-section {
+    padding: var(--space-20) 0;
+}
+
+.page-content-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.page-content h1,
+.page-content h2,
+.page-content h3,
+.page-content h4,
+.page-content h5,
+.page-content h6 {
+    color: var(--color-gray-900);
+    margin-bottom: var(--space-4);
+    margin-top: var(--space-6);
+}
+
+.page-content h1:first-child,
+.page-content h2:first-child,
+.page-content h3:first-child,
+.page-content h4:first-child,
+.page-content h5:first-child,
+.page-content h6:first-child {
+    margin-top: 0;
+}
+
+.page-content h1 {
+    font-size: var(--text-3xl);
+    font-weight: var(--font-bold);
+}
+
+.page-content h2 {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-semibold);
+}
+
+.page-content h3 {
+    font-size: var(--text-xl);
+    font-weight: var(--font-semibold);
+}
+
+.page-content h4 {
+    font-size: var(--text-lg);
+    font-weight: var(--font-semibold);
+}
+
+.page-content h5 {
+    font-size: var(--text-base);
+    font-weight: var(--font-semibold);
+}
+
+.page-content h6 {
+    font-size: var(--text-sm);
+    font-weight: var(--font-semibold);
+}
+
+.page-content p {
+    margin-bottom: var(--space-4);
+}
+
+.page-content ul,
+.page-content ol {
+    margin-bottom: var(--space-4);
+    padding-left: var(--space-6);
+}
+
+.page-content li {
+    margin-bottom: var(--space-2);
+}
+
+.page-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius-md);
+    margin: var(--space-4) 0;
+    box-shadow: var(--shadow-sm);
+}
+
+.page-content blockquote {
+    border-left: 4px solid var(--color-primary-500);
+    padding-left: var(--space-4);
+    margin: var(--space-6) 0;
+    font-style: italic;
+    color: var(--color-gray-600);
+    background: var(--color-gray-50);
+    padding: var(--space-4);
+    border-radius: var(--radius-sm);
+}
+
+.page-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: var(--space-6) 0;
+    background: var(--white);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+}
+
+.page-content th,
+.page-content td {
+    padding: var(--space-3);
+    text-align: left;
+    border-bottom: 1px solid var(--color-gray-200);
+}
+
+.page-content th {
+    background: var(--color-gray-50);
+    font-weight: var(--font-semibold);
+    color: var(--color-gray-900);
+}
+
+.page-content tr:last-child td {
+    border-bottom: none;
+}
+
+.page-content a {
+    color: var(--color-primary-500);
+    text-decoration: none;
+    transition: var(--transition-all);
+}
+
+.page-content a:hover {
+    color: var(--color-primary-600);
+    text-decoration: underline;
+}
+
+.page-content strong {
+    font-weight: var(--font-semibold);
+    color: var(--color-gray-900);
+}
+
+.page-content em {
+    font-style: italic;
+}
+
+.page-content code {
+    background: var(--color-gray-100);
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--radius-sm);
+    font-family: 'Courier New', monospace;
+    font-size: var(--text-sm);
+    color: var(--color-gray-800);
+}
+
+.page-content pre {
+    background: var(--color-gray-100);
+    padding: var(--space-4);
+    border-radius: var(--radius-md);
+    overflow-x: auto;
+    margin: var(--space-4) 0;
+}
+
+.page-content pre code {
+    background: none;
+    padding: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 991.98px) {
+    .page-content-container {
+        padding: 0 var(--space-4);
+    }
+}
+
+@media (max-width: 767.98px) {
+    .page-content-section {
+        padding: var(--space-16) 0;
+    }
+
+    .page-content-container {
+        padding: 0 var(--space-3);
+    }
+
+    .page-content {
+        padding: var(--space-6);
+    }
+
+    .page-content h1 {
+        font-size: var(--text-2xl);
+    }
+
+    .page-content h2 {
+        font-size: var(--text-xl);
+    }
+
+    .page-content h3 {
+        font-size: var(--text-lg);
+    }
+
+    .page-content h4 {
+        font-size: var(--text-base);
+    }
+
+    .page-content h5,
+    .page-content h6 {
+        font-size: var(--text-sm);
+    }
+
+    .page-content ul,
+    .page-content ol {
+        padding-left: var(--space-4);
+    }
+
+    .page-content table {
+        font-size: var(--text-sm);
+    }
+
+    .page-content th,
+    .page-content td {
+        padding: var(--space-2);
+    }
+}
+
+@media (max-width: 575.98px) {
+    .page-content-container {
+        padding: 0 var(--space-2);
+    }
+
+    .page-content {
+        padding: var(--space-4);
+    }
+
+    .page-content h1 {
+        font-size: var(--text-xl);
+    }
+
+    .page-content h2 {
+        font-size: var(--text-lg);
+    }
+
+    .page-content h3 {
+        font-size: var(--text-base);
+    }
+}

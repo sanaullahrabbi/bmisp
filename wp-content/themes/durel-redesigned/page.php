@@ -1,21 +1,38 @@
 <?php
-
-/* Template Name: Support Team */
 get_header();
-$get_options = get_option('durel_options');
 ?>
 
-<!-- Page Banner Section Start  -->
-<?php pageBannerSection(pageTitle: get_the_title()) ?>
-<!-- Page Banner Section End  -->
+<!-- Page Header Section Start -->
+<?php 
+// Get page title and subtitle
+$page_title = get_the_title();
+$page_subtitle = '';
 
-<!-- Page Section Start  -->
-<section class="main-page-section">
-    <div class="container position-relative mt-60 mb-60">
-        <?php the_content() ?>
+// Create breadcrumbs
+$breadcrumbs = array(
+    array('title' => 'Home', 'url' => home_url('/')),
+    array('title' => $page_title, 'url' => false)
+);
+
+// Call the page header function
+pageHeaderSection($page_title, $page_subtitle, $breadcrumbs);
+?>
+<!-- Page Header Section End -->
+
+<!-- Page Content Section Start -->
+<section class="page-content-section">
+    <div class="page-content-container">
+        <div class="page-content">
+            <?php
+            while (have_posts()) :
+                the_post();
+                the_content();
+            endwhile;
+            ?>
+        </div>
     </div>
 </section>
-<!-- Page Section End  -->
+<!-- Page Content Section End -->
 
 <?php
 get_footer();

@@ -96,19 +96,6 @@ pageHeaderSection($page_title, $page_subtitle, $breadcrumbs);
                         <?php endforeach; ?>
                     </div>
                 </div>
-            <?php else: ?>
-                <div class="row">
-                    <div class="col-12 text-center">
-                        <div class="no-packages-message">
-                            <i class="fas fa-box-open mb-3"></i>
-                            <h3>No Packages Available</h3>
-                            <p>No packages have been configured for this hosting service yet.</p>
-                            <a href="<?php echo home_url('/hosting/'); ?>" class="btn btn-primary">
-                                View All Hosting Services
-                            </a>
-                        </div>
-                    </div>
-                </div>
             <?php endif; ?>
 
             <!-- Back to Hosting Link -->

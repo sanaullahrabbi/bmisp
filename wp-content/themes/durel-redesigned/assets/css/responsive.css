@@ -18,10 +18,10 @@
 
 /* Container adjustments */
 @media (min-width: 992px) {
-    .container {
-        padding-right: 0;
-        padding-left: 0;
-    }
+  .container {
+    padding-right: 0;
+    padding-left: 0;
+  }
 }
 
 /* ==========================================================================
@@ -252,8 +252,8 @@
     }
 
     .activity-card .activity-icon {
-        width: 50px;
-        height: 50px;
+    width: 50px;
+    height: 50px;
         margin: 0 auto var(--space-3);
     }
 
@@ -329,7 +329,7 @@
     }
 
     .cta-buttons .btn {
-        width: 100%;
+    width: 100%;
         max-width: 300px;
     }
 
@@ -717,8 +717,8 @@
 @media (max-width: 991.98px) {
     .navbar-nav {
         flex-direction: column;
-        width: 100%;
-    }
+    width: 100%;
+  }
 
     .navbar-collapse {
         background: var(--white);
@@ -813,8 +813,8 @@
 
     .packages-slick-prev,
     .packages-slick-next {
-        display: none !important;
-    }
+    display: none !important;
+  }
 }
 
 /* Slider Configuration */
@@ -973,8 +973,8 @@
     .back-to-top,
     .packages-slick-prev,
     .packages-slick-next {
-        display: none !important;
-    }
+    display: none !important;
+  }
 
     .package-card {
         break-inside: avoid;
@@ -989,5 +989,5 @@
     * {
         color: black !important;
         background: white !important;
-    }
+  }
 }
